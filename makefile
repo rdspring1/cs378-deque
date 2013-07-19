@@ -28,4 +28,4 @@ TestDeque: Deque.h TestDeque.c++
 	g++ -pedantic -std=c++0x -Wall TestDeque.c++ -o TestDeque -lgtest -lpthread -lgtest_main
 
 TestDeque.out: TestDeque
-	valgrind TestDeque > TestDeque.out
+	valgrind ./TestDeque > TestDeque.out

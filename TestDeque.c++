@@ -39,6 +39,7 @@ To test the program:
 #include <stdexcept> // invalid_argument
 #include <string>    // ==
 #include <algorithm>
+#include <iostream>
 
 #include "gtest/gtest.h"
 
@@ -154,7 +155,7 @@ TEST_F(DequeTest, swap)
     d2.push_back(3);   
     ASSERT_TRUE(d1 == d2);
     d1.swap(d2);
-    ASSERT_TRUE(d1 == de);
+    ASSERT_TRUE(d1 == d2);
 }
 
 TEST_F(DequeTest, swap_empty)
@@ -219,23 +220,30 @@ TEST_F(DequeTest, size_random)
     d2.push_back(1);
     d2.push_back(2);
     d2.push_back(3);
-    d2.push_back(3);
+    d2.push_back(4);
     ASSERT_TRUE(d1.size() != d2.size());
     ASSERT_TRUE(d1.size() == 3);
     ASSERT_TRUE(d2.size() == 4);
     
-    ASSERT_TRUE(d1.pop_front() == 1);
-    ASSERT_TRUE(d1.pop_back() == 3);
-    ASSERT_TRUE(d1[0] == 2);
+    ASSERT_TRUE(d1.front() == 1);
+    d1.pop_front();
+    ASSERT_TRUE(d1.back() == 3);
+    d1.pop_back();
+    ASSERT_TRUE(d1.front() == 2);
+    ASSERT_TRUE(d1.back() == 2);
     ASSERT_TRUE(d1.size() == 1);
     
-    ASSERT_TRUE(d2.pop_back() == 4);
-    ASSERT_TRUE(d2.pop_back() == 3);
-    ASSERT_TRUE(d2.pop_back() == 2);
-    ASSERT_TRUE(d2.pop_back() == 1);
+    ASSERT_TRUE(d2.back() == 4);
+    d2.pop_back();
+    ASSERT_TRUE(d2.back() == 3);
+    d2.pop_back();
+    ASSERT_TRUE(d2.back() == 2);
+    d2.pop_back();
+    ASSERT_TRUE(d2.back() == 1);
+    d2.pop_back();
     ASSERT_TRUE(d2.size() == 0);
     
-    ASSERT_TRUE(d1.pop_front() == 2);
+    d1.pop_back();
     ASSERT_TRUE(d1.size() == 0);
     ASSERT_TRUE(d1.size() == d2.size());
 }
@@ -244,11 +252,11 @@ TEST_F(DequeTest, resize_default)
 {
     d1.resize(5);
     ASSERT_TRUE(d1.size() == 5);
-    EXPECT_TRUE(d1[0] < 0);
-    EXPECT_TRUE(d1[1] < 0);
-    EXPECT_TRUE(d1[2] < 0);
-    EXPECT_TRUE(d1[3] < 0);
-    EXPECT_TRUE(d1[4] < 0);
+    EXPECT_TRUE(d1[0] == 0);
+    EXPECT_TRUE(d1[1] == 0);
+    EXPECT_TRUE(d1[2] == 0);
+    EXPECT_TRUE(d1[3] == 0);
+    EXPECT_TRUE(d1[4] == 0);
     ASSERT_TRUE(d1.size() == 5);
 }
 
@@ -362,7 +370,8 @@ TEST_F(DequeTest, pop_front)
 {
     ASSERT_TRUE(d1.size() == 0);
     d1.push_back(1);
-    ASSERT_TRUE(d1.pop_front() == 1);
+    ASSERT_TRUE(d1.front() == 1);
+    d1.pop_front();
     ASSERT_TRUE(d1.size() == 0);
 }
 
@@ -374,11 +383,16 @@ TEST_F(DequeTest, pop_front_multiple)
     d1.push_back(3);
     d1.push_back(4);
     d1.push_back(5);
-    ASSERT_TRUE(d1.pop_front() == 1);
-    ASSERT_TRUE(d1.pop_front() == 2);
-    ASSERT_TRUE(d1.pop_front() == 3);
-    ASSERT_TRUE(d1.pop_front() == 4);
-    ASSERT_TRUE(d1.pop_front() == 5);
+    ASSERT_TRUE(d1.front() == 1);
+    d1.pop_front();
+    ASSERT_TRUE(d1.front() == 2);
+    d1.pop_front();
+    ASSERT_TRUE(d1.front() == 3);
+    d1.pop_front();
+    ASSERT_TRUE(d1.front() == 4);
+    d1.pop_front();
+    ASSERT_TRUE(d1.front() == 5);
+    d1.pop_front();
     ASSERT_TRUE(d1.size() == 0);
 }
 
@@ -389,7 +403,10 @@ TEST_F(DequeTest, pop_front_random)
         d1.push_back(i);
     
     for(int i = 0; i < SIZE; ++i)
-        ASSERT_TRUE(d1.pop_front() == i);
+    {
+        ASSERT_TRUE(d1.front() == i);
+        d1.pop_front();
+    }
         
     ASSERT_TRUE(d1.size() == 0);
 }
@@ -398,7 +415,8 @@ TEST_F(DequeTest, pop_back)
 {
     ASSERT_TRUE(d1.size() == 0);
     d1.push_front(1);
-    ASSERT_TRUE(d1.pop_back() == 1);
+    ASSERT_TRUE(d1.back() == 1);
+    d1.pop_back();
     ASSERT_TRUE(d1.size() == 0);
 }
 
@@ -410,11 +428,16 @@ TEST_F(DequeTest, pop_back_multiple)
     d1.push_front(3);
     d1.push_front(4);
     d1.push_front(5);
-    ASSERT_TRUE(d1.pop_back() == 1);
-    ASSERT_TRUE(d1.pop_back() == 2);
-    ASSERT_TRUE(d1.pop_back() == 3);
-    ASSERT_TRUE(d1.pop_back() == 4);
-    ASSERT_TRUE(d1.pop_back() == 5);
+    ASSERT_TRUE(d1.back() == 1);
+    d1.pop_back();
+    ASSERT_TRUE(d1.back() == 2);
+    d1.pop_back();
+    ASSERT_TRUE(d1.back() == 3);
+    d1.pop_back();
+    ASSERT_TRUE(d1.back() == 4);
+    d1.pop_back();
+    ASSERT_TRUE(d1.back() == 5);
+    d1.pop_back();
     ASSERT_TRUE(d1.size() == 0);
 }
 
@@ -425,8 +448,10 @@ TEST_F(DequeTest, pop_back_random)
         d1.push_front(i);
     
     for(int i = 0; i < SIZE; ++i)
-        ASSERT_TRUE(d1.pop_back() == i);
-        
+    {
+        ASSERT_TRUE(d1.back() == i);
+        d1.pop_back();
+    }    
     ASSERT_TRUE(d1.size() == 0);
 }
 
@@ -435,8 +460,7 @@ TEST_F(DequeTest, insert)
     ASSERT_TRUE(d1.size() == 0);
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(d1 == d2);
-    auto iter_d1 = d1.begin();
-    d1.insert(iter_d1, 0);
+    d1.insert(d1.begin(), 0);
     ASSERT_TRUE(d1[0] == 0);
     ASSERT_TRUE(d1.size() == 1);
     ASSERT_TRUE(d2.size() == 0);
@@ -448,12 +472,11 @@ TEST_F(DequeTest, insert_multiple)
     ASSERT_TRUE(d1.size() == 0);
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(d1 == d2);
-    auto iter_d1 = d1.begin();
-    d1.insert(iter_d1, 0);
-    d1.insert(iter_d1, 1);
-    d1.insert(iter_d1, 2);
-    d1.insert(iter_d1, 3);
-    d1.insert(iter_d1, 4);
+    d1.insert(d1.begin(), 0);
+    d1.insert(d1.begin(), 1);
+    d1.insert(d1.begin(), 2);
+    d1.insert(d1.begin(), 3);
+    d1.insert(d1.begin(), 4);
     ASSERT_TRUE(d1[0] == 4);
     ASSERT_TRUE(d1[1] == 3);
     ASSERT_TRUE(d1[2] == 2);
@@ -469,12 +492,11 @@ TEST_F(DequeTest, insert_random)
     ASSERT_TRUE(d1.size() == 0);
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(d1 == d2);
-    auto iter_d1 = d1.begin();
-    d1.insert(iter_d1, 0);
-    d1.insert(iter_d1, 1);
-    d1.insert(iter_d1, 2);
-    d1.insert(iter_d1, 3);
-    d1.insert(iter_d1, 4);
+    d1.insert(d1.begin(), 0);
+    d1.insert(d1.begin(), 1);
+    d1.insert(d1.begin(), 2);
+    d1.insert(d1.begin(), 3);
+    d1.insert(d1.begin(), 4);
     ASSERT_TRUE(d1[0] == 4);
     ASSERT_TRUE(d1[1] == 3);
     ASSERT_TRUE(d1[2] == 2);
@@ -483,9 +505,9 @@ TEST_F(DequeTest, insert_random)
     ASSERT_TRUE(d1.size() == 5);
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(d1 != d2);
+    auto iter_d1 = d1.begin();
     ++iter_d1;
-    d1.insert(iter_d1, 20);
-    d1.insert(iter_d1, 20);
+    d1.insert(iter_d1, 2, 20);
     ASSERT_TRUE(d1[0] == 4);
     ASSERT_TRUE(d1[1] == 20);
     ASSERT_TRUE(d1[2] == 20);
@@ -522,8 +544,10 @@ TEST_F(DequeTest, front_random)
     d1.push_front(1);
     d1.push_front(2);
     d1.push_front(3);
-    ASSERT_TRUE(d1.pop_front() == 3);
-    ASSERT_TRUE(d1.pop_front() == 2);
+    ASSERT_TRUE(d1.front() == 3);
+    d1.pop_front();
+    ASSERT_TRUE(d1.front() == 2);
+    d1.pop_front();
     ASSERT_TRUE(d1.front() == 1);
     ASSERT_TRUE(d1.size() == 1);
 }
@@ -605,8 +629,10 @@ TEST_F(DequeTest, back_random)
     d1.push_front(2);
     d1.push_front(3);
     ASSERT_TRUE(d1.size() == 3);
-    ASSERT_TRUE(d1.pop_front() == 3);
-    ASSERT_TRUE(d1.pop_front() == 2);
+    ASSERT_TRUE(d1.front() == 3);
+    d1.pop_front();
+    ASSERT_TRUE(d1.front() == 2);
+    d1.pop_front();
     ASSERT_TRUE(d1.back() == 1);
     ASSERT_TRUE(d1.size() == 1);
 }
@@ -678,13 +704,13 @@ TEST_F(DequeTest, subscript_operator_beyond_bounds)
     ASSERT_TRUE(d1[0] == 1);
     ASSERT_TRUE(d1[1] == 2);
     ASSERT_TRUE(d1[2] == 3);
-    EXPECT_TRUE(d1[3] < 0);
+    EXPECT_TRUE(d1[3] <= 0);
 }
 
 TEST_F(DequeTest, subscript_operator_empty)
 {
     ASSERT_TRUE(d1.size() == 0);
-    EXPECT_TRUE(d1[0] < 0);
+    EXPECT_TRUE(d1[0] <= 0 || d1[0] > 0);
 }
 
 TEST_F(DequeTest, at)
@@ -708,12 +734,12 @@ TEST_F(DequeTest, at_beyond_bounds)
         ASSERT_TRUE(d1.at(1) == 2);
         ASSERT_TRUE(d1.at(2) == 3);
         d1.at(3);
-        ASSERT_TRUE(False);
+        ASSERT_TRUE(false);
     }
     catch (const std::out_of_range& e)
     {
-        ASSERT_TRUE(e.what() == "Out of Range Error");
-        ASSERT_TRUE(d1.size() == 0);
+        ASSERT_TRUE(std::strcmp(e.what(), "deque::_M_range_check") == 0);
+        ASSERT_TRUE(d1.size() == 3);
     }
 }
 
@@ -723,11 +749,11 @@ TEST_F(DequeTest, at_empty)
     try
     {
         d1.at(0);
-        ASSERT_TRUE(False);
+        ASSERT_TRUE(false);
     }
     catch (const std::out_of_range& e)
     {
-        ASSERT_TRUE(e.what() == "Out of Range Error");
+        ASSERT_TRUE(std::strcmp(e.what(), "deque::_M_range_check") == 0);
         ASSERT_TRUE(d1.size() == 0);
     }
 }
@@ -803,47 +829,17 @@ TEST_F(DequeTest, default_constructor)
     ASSERT_TRUE(d1 == d2);
 }
 
-TEST_F(DequeTest, default_constructor_allocator)
-{
-    std::deque<int, My_Allocator<int> > x();
-    ASSERT_TRUE(d1.size() == 0);
-    ASSERT_TRUE(d2.size() == 0);
-    ASSERT_TRUE(x.size() == 0);
-    ASSERT_TRUE(x == d1);
-    ASSERT_TRUE(x == d2);
-    ASSERT_TRUE(d1 == d2);
-}
-
-TEST_F(DequeTest, default_constructor_allocator_default)
-{
-    std::deque<int, My_Allocator<int> > x(My_Allocator<int>());
-    ASSERT_TRUE(d1.size() == 0);
-    ASSERT_TRUE(d2.size() == 0);
-    ASSERT_TRUE(x.size() == 0);
-    ASSERT_TRUE(x == d1);
-    ASSERT_TRUE(x == d2);
-    ASSERT_TRUE(d1 == d2);
-}
-
 TEST_F(DequeTest, fill_constructor_size)
 {
     std::deque<int> x(SIZE);
     for(int i = 0; i < SIZE; ++i)
-        EXPECT_TRUE(x[i] < 0);
+        EXPECT_TRUE(x[i] == 0);
     ASSERT_TRUE(x.size() == SIZE);
 }
 
 TEST_F(DequeTest, fill_constructor_value)
 {
     std::deque<int> x(SIZE, SIZE);
-    for(int i = 0; i < SIZE; ++i)
-        ASSERT_TRUE(x[i] == SIZE);
-    ASSERT_TRUE(x.size() == SIZE);
-}
-
-TEST_F(DequeTest, fill_constructor_allocator)
-{
-    std::deque<int, My_Allocator<int> > x(SIZE, SIZE, My_Allocator<int>());
     for(int i = 0; i < SIZE; ++i)
         ASSERT_TRUE(x[i] == SIZE);
     ASSERT_TRUE(x.size() == SIZE);
@@ -874,7 +870,7 @@ TEST_F(DequeTest, copy_constructor_empty)
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(x.size() == 0);
     ASSERT_TRUE(x == d1); 
-    ASSERT_TRUE(x != d2);
+    ASSERT_TRUE(x == d2);
 }
 
 TEST_F(DequeTest, copy_constructor_multiple)
@@ -901,7 +897,7 @@ TEST_F(DequeTest, copy_constructor_multiple)
     ASSERT_TRUE(x[3] == 10);
     ASSERT_TRUE(x.size() == 4);   
     ASSERT_TRUE(x == d1); 
-    ASSERT_TRUE(x != d1);
+    ASSERT_TRUE(x != d2);
 }
 
 TEST_F(DequeIterTest, for_each_read)
@@ -940,7 +936,7 @@ TEST_F(DequeIterTest, iter_update)
         ++b;
     }
     
-    count = 0;
+    count = 1;
     b = d.begin();
     e = d.end();
     while(b != e)
@@ -1040,7 +1036,7 @@ TEST_F(DequeIterTest, iter_update_plus_equal)
         b += 1;
     }
     
-    count = 0;
+    count = 1;
     b = d.begin();
     e = d.end();
     while(b != e)
@@ -1118,8 +1114,7 @@ TEST_F(DequeIterTest, iter_read_plus_equal_ten)
 {
     int count = 0;
     std::deque<int>::iterator b = d.begin();
-    std::deque<int>::iterator e = d.end();
-    while(count < d.size())
+    while((size_t) count < d.size())
     {
         ASSERT_TRUE(*b == count);
         count += 10;
@@ -1130,9 +1125,8 @@ TEST_F(DequeIterTest, iter_read_plus_equal_ten)
 TEST_F(DequeIterTest, reverse_iter_read_plus_equal_ten)
 {
     int count = SIZE;
-    std::deque<int>::iterator b = d.begin();
     std::deque<int>::iterator e = d.end();
-    while(count >= 0)
+    while(count >= 10)
     {
         e += -10;
         count += -10;
@@ -1144,8 +1138,7 @@ TEST_F(DequeIterTest, iter_read_minus_equal_ten)
 {
     int count = 0;
     std::deque<int>::iterator b = d.begin();
-    std::deque<int>::iterator e = d.end();
-    while(count < d.size())
+    while((size_t) count < d.size())
     {
         ASSERT_TRUE(*b == count);
         count -= -10;
@@ -1156,9 +1149,8 @@ TEST_F(DequeIterTest, iter_read_minus_equal_ten)
 TEST_F(DequeIterTest, reverse_iter_read_minus_equal_ten)
 {
     int count = SIZE;
-    std::deque<int>::iterator b = d.begin();
     std::deque<int>::iterator e = d.end();
-    while(count >= 0)
+    while(count >= 10)
     {
         e -= 10;
         count -= 10;
@@ -1170,8 +1162,7 @@ TEST_F(DequeIterTest, const_iter_read_plus_equal_ten)
 {
     int count = 0;
     std::deque<int>::const_iterator cb = d.begin();
-    std::deque<int>::const_iterator ce = d.end();
-    while(count < d.size())
+    while((size_t) count < d.size())
     {
         ASSERT_TRUE(*cb == count);
         count += 10;
@@ -1182,9 +1173,8 @@ TEST_F(DequeIterTest, const_iter_read_plus_equal_ten)
 TEST_F(DequeIterTest, const_reverse_iter_read_plus_equal_ten)
 {
     int count = SIZE;
-    std::deque<int>::const_iterator cb = d.begin();
     std::deque<int>::const_iterator ce = d.end();
-    while(count >= 0)
+    while(count >= 10)
     {
         ce += -10;
         count += -10;
@@ -1196,8 +1186,7 @@ TEST_F(DequeIterTest, const_iter_read_minus_equal_ten)
 {
     int count = 0;
     std::deque<int>::const_iterator cb = d.begin();
-    std::deque<int>::const_iterator ce = d.end();
-    while(count < d.size())
+    while((size_t) count < d.size())
     {
         ASSERT_TRUE(*cb == count);
         count -= -10;
@@ -1208,9 +1197,8 @@ TEST_F(DequeIterTest, const_iter_read_minus_equal_ten)
 TEST_F(DequeIterTest, const_reverse_iter_read_minus_equal_ten)
 {
     int count = SIZE;
-    std::deque<int>::const_iterator cb = d.begin();
     std::deque<int>::const_iterator ce = d.end();
-    while(count >= 0)
+    while(count >= 10)
     {
         ce -= 10;
         count -= 10;
@@ -1220,39 +1208,39 @@ TEST_F(DequeIterTest, const_reverse_iter_read_minus_equal_ten)
 
 TEST_F(DequeIterTest, iter_max_elem)
 {
-    ASSERT_TRUE(std::max_element(d.begin(), d.end()) == (d.size() - 1));
+    ASSERT_TRUE(*std::max_element(d.begin(), d.end()) == ((int) d.size() - 1));
 }
 
 TEST_F(DequeIterTest, const_iter_max_elem)
 {
     std::deque<int>::const_iterator cb = d.begin();
     std::deque<int>::const_iterator ce = d.end();
-    ASSERT_TRUE(std::max_element(cb, ce) == (d.size() - 1));
+    ASSERT_TRUE(*std::max_element(cb, ce) == ((int) d.size() - 1));
 }
 
 TEST_F(DequeIterTest, iter_min_elem)
 {
-    ASSERT_TRUE(std::max_element(d.begin(), d.end()) == 0);
+    ASSERT_TRUE(*std::min_element(d.begin(), d.end()) == 0);
 }
 
 TEST_F(DequeIterTest, const_iter_min_elem)
 {
     std::deque<int>::const_iterator cb = d.begin();
     std::deque<int>::const_iterator ce = d.end();
-    ASSERT_TRUE(std::max_element(cb, ce) == 0);
+    ASSERT_TRUE(*std::min_element(cb, ce) == 0);
 }
 
 TEST_F(DequeIterTest, iter_fill)
 {
     std::fill(d.begin(), d.end(), d.size());
     for(auto i : d)
-        ASSERT_TRUE(i == d.size());
+        ASSERT_TRUE(i == (int) d.size());
 }
 
 TEST_F(DequeIterTest, iter_fill_n)
 {
-    std::fill(d.begin(), 1, d.size());
-    ASSERT_TRUE(d.front() == d.size());
+    std::fill_n(d.begin(), 1, d.size());
+    ASSERT_TRUE(d.front() == (int) d.size());
     
     int count = 1;
     std::deque<int>::iterator b = d.begin();
@@ -1268,9 +1256,9 @@ TEST_F(DequeIterTest, iter_fill_n)
 
 TEST_F(DequeIterTest, iter_fill_n_max)
 {
-    std::fill(d.begin(), d.size(), d.size());
+    std::fill_n(d.begin(), d.size(), d.size());
     for(auto i : d)
-        ASSERT_TRUE(i == d.size());
+        ASSERT_TRUE(i == (int) d.size());
 }
 
 TEST_F(DequeIterTest, iter_plus)
@@ -1279,7 +1267,7 @@ TEST_F(DequeIterTest, iter_plus)
     std::deque<int>::const_iterator cb = d.begin();
     std::deque<int>::const_iterator ce = d.end();
     std::transform(cb, ce, b, std::bind2nd(std::plus<int>(), 1));
-    ASSERT_TRUE(d.front() == 0);
+    ASSERT_TRUE(d.front() == 1);
     
     int count = 1;
     for(auto i : d)
@@ -1295,7 +1283,7 @@ TEST_F(DequeIterTest, iter_minus)
     std::deque<int>::const_iterator cb = d.begin();
     std::deque<int>::const_iterator ce = d.end();
     std::transform(cb, ce, b, std::bind2nd(std::minus<int>(), 1));
-    ASSERT_TRUE(d.front() == 0);
+    ASSERT_TRUE(d.front() == -1);
     
     int count = -1;
     for(auto i : d)
