@@ -75,6 +75,20 @@ class DequeIterTest : public testing::Test
 	}
 }; 
 
+class DequeSingleTest : public testing::Test
+{
+    public:
+        int v1;
+        int v2;
+        int v3;
+        
+    virtual void SetUp() {
+        v1 = 1;
+        v2 = 2;
+        v3 = 3;
+    }
+};
+
 
 TEST_F(DequeTest, equal_empty) 
 {
@@ -1347,4 +1361,113 @@ TEST_F(DequeIterTest, iter_replace)
 {
     std::replace(d.begin(), d.end(), 0, SIZE);
     ASSERT_TRUE(d.front() == SIZE);
+}
+
+TEST_F(DequeSingleTest, default_argument_constructor)
+{
+    std::deque<int> x(10);
+    assert(!x.empty());
+    assert(x.size()                                     == 10);
+    assert(std::count(x.begin(), x.end(), value_type()) == 10);
+}
+
+TEST_F(DequeSingleTest, default_argument_constructor)
+{
+    const std::deque<int> x(10, v1);
+    assert(!x.empty());
+    assert(x.size()                           == 10);
+    assert(std::count(x.begin(), x.end(), v1) == 10);
+}
+
+TEST_F(DequeSingleTest, push_pop_back)
+{
+    std::deque<int> x;
+    x.push_back(v1);
+    x.push_back(v2);
+    x.push_back(v3);
+    std::deque<int> y(x);
+    assert(x == y);
+    y.pop_back();
+    assert(x.size() == 3);
+    assert(x.back() == v3);
+    assert(y.size() == 2);
+    assert(y.back() == v2);
+    }
+    
+TEST_F(DequeSingleTest, push_pop_back_copy_assignment)
+{
+    std::deque<int> x;
+    x.push_back(v1);
+    x.push_back(v2);
+    x.push_back(v3);
+    std::deque<int> y;
+    y.push_back(v3);
+    y.push_back(v1);
+    assert(x != y);
+    y = x;
+    assert(x == y);
+    y.pop_back();
+    assert(x.size() == 3);
+    assert(x.back() == v3);
+    assert(y.size() == 2);
+    assert(y.back() == v2);
+}
+
+TEST_F(DequeSingleTest, push_back_swap)
+{
+    std::deque<int> x;
+    x.push_back(v1);
+    x.push_back(v2);
+    x.push_back(v3);
+    std::deque<int> y;
+    y.push_back(v1);
+    y.push_back(v2);
+    x.swap(y);
+    assert(x.size() == 2);
+    assert(x.back() == v2);
+    assert(y.size() == 3);
+    assert(y.back() == v3);
+}
+
+TEST_F(DequeSingleTest, push_back_copy)
+{
+    std::deque<int> x;
+    x.push_back(v1);
+    x.push_back(v2);
+    x.push_back(v3);
+    std::deque<int> y(x.size());
+    std::copy(x.begin(), x.end(), y.begin());
+    assert(std::equal(x.begin(), x.end(), y.begin()));
+}
+
+TEST_F(DequeSingleTest, back_front_push_back)
+{
+    std::deque<int> x;
+    x.push_back(v1);
+    x.push_back(v2);
+    x.push_back(v3);
+    assert(x.front() == v1);
+    x.front() = v2;
+    assert(x.front() == v2);
+    assert(x.back()  == v3);
+    x.back()  = v2;
+    assert(x.back()  == v2);
+}
+
+TEST_F(DequeSingleTest, push_back_rel_ops)
+{
+    std::deque<int> x;
+    x.push_back(v1);
+    x.push_back(v2);
+    x.push_back(v3);
+    std::deque<int> y;
+    y.push_back(v1);
+    y.push_back(v2);
+    y.push_back(v3);
+    assert(x == y);
+    assert(x <= y);
+    assert(x >= y);
+    assert(!(x != y));
+    assert(!(x <  y));
+    assert(!(x >  y));
 }
