@@ -7,6 +7,9 @@
 #ifndef Deque_h
 #define Deque_h
 
+// Global Constant
+const int SIZE = 10;
+
 // --------
 // includes
 // --------
@@ -150,8 +153,13 @@ class MyDeque
         // ----
 
         allocator_type _a;
-
-        // <your data>
+		pointer* cb;
+		pointer* ce;
+		pointer* pb;
+		pointer* pe;
+		pointer b;
+		pointer e;
+		size_type count;
 
     private:
         // -----
@@ -584,27 +592,58 @@ class MyDeque
         /**
          * <your documentation>
          */
-        explicit MyDeque (const allocator_type& a = allocator_type()) 
+        explicit MyDeque (const allocator_type& a = allocator_type()) : _a (a)
         {
-            // <your code>
+            cb = pb = b = pe = e = ce = 0;
+			count = 0;
             assert(valid());
         }
 
         /**
          * <your documentation>
          */
-        explicit MyDeque (size_type s, const_reference v = value_type(), const allocator_type& a = allocator_type()) 
+        explicit MyDeque (size_type s, const_reference v = value_type(), const allocator_type& a = allocator_type()) : _a (a)
         {
-            // <your code>
+            size_type outer_array = (s % SIZE) ? s / SIZE + 1 : s / SIZE;
+			allocator_type::rebind<pointer>::other _astar;
+			pe = pb = cb = _astar.allocate(outer_array);
+			ce = cb + outer_array;
+
+			for(int i = s; i > 0; i -= SIZE)
+			{
+				size_type inner_array = (i >= SIZE) ? SIZE : i;
+				*pe = _a.allocate(SIZE);
+				e = uninitialized_fill(_a, *pe, *pe + inner_array, v);
+				++pe;
+			}
+			b = pb[0];
+			count = s;
             assert(valid());
         }
 
         /**
          * <your documentation>
          */
-        MyDeque (const MyDeque& that) 
+        MyDeque (const MyDeque& that) : _a (that.a)
         {
-            // <your code>
+			count = that.size();
+            size_type outer_array = (that.size() % SIZE) ? that.size() / SIZE + 1 : that.size() / SIZE;
+			allocator_type::rebind<pointer>::other _astar;
+			pe = pb = cb = _astar.allocate(outer_array);
+			ce = cb + outer_array;
+
+			auto bIter = that.begin();
+			auto eIter = that.begin();
+			for(int i = that.size(); i > 0; i -= SIZE)
+			{
+				size_type inner_array = (i >= SIZE) ? SIZE : i;
+				eIter += inner_array;
+				*pe = _a.allocate(SIZE);
+				e = uninitialized_copy(_a, bIter, eIter, *pe);
+				bIter += inner_array;
+				++pe;
+			}
+			b = pb[0];
             assert(valid());
         }
 
@@ -644,10 +683,11 @@ class MyDeque
          */
         reference operator [] (size_type index) 
         {
-            // <your code>
-            // dummy is just to be able to compile the skeleton, remove it
-            static value_type dummy;
-            return dummy;
+			size_type offsetBOA = cb - pb;
+            size_type offsetBIA = b - *pb;
+			size_type outer_array_index = (index + offsetBIA) / SIZE + offsetBOA;
+			size_type inner_array_index = (index + offsetBIA) % SIZE;
+			return cb[outer_array_index][inner_array_index];
         }
 
         /**
@@ -890,8 +930,7 @@ class MyDeque
          */
         size_type size () const 
         {
-            // <your code>
-            return 0;
+            return count;
         }
 
         // ----
