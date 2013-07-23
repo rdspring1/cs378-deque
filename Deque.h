@@ -239,7 +239,7 @@ class MyDeque
                 // ----
                 // data
                 // ----
-                const MyDeque* _p;
+                MyDeque* _p;
                 std::size_t    _index;
 
             private:
@@ -260,7 +260,7 @@ class MyDeque
                 /**
                  * <your documentation>
                  */
-                iterator (const MyDeque* p, std::size_t i) : _p(p), _index(i)
+                iterator (MyDeque* p, std::size_t i) : _p(p), _index(i)
                 {
                     assert(valid());
                 }
@@ -279,9 +279,8 @@ class MyDeque
                  */
                 reference operator * () const 
                 {
-					assert(_index <= _p->size());
-					value_type r = _p->operator[](_index);
-					return r;
+					assert(_index <= _p->size()); 
+					return _p->operator[](_index);
                 }
 
                 // -----------
@@ -483,8 +482,7 @@ class MyDeque
                 reference operator * () const 
                 {
 					assert(_index <= _p->size());
-					value_type r = _p->operator[](_index);
-					return r;
+					return _p->operator[](_index);
                 }
 
                 // -----------
@@ -618,7 +616,7 @@ class MyDeque
         /**
          * <your documentation>
          */
-        MyDeque (const MyDeque& that) : _a (that.a)
+        MyDeque (const MyDeque& that) : _a (that._a)
         {
 			count = that.size();
             size_type outer_array = (that.size() % SIZE) ? that.size() / SIZE + 1 : that.size() / SIZE;
