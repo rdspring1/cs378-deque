@@ -200,8 +200,7 @@ class MyDeque
                  */
                 friend bool operator == (const iterator& lhs, const iterator& rhs) 
                 {
-                    // <your code>
-                    return true;
+                    return (lhs._p == rhs._p) && (lhs._index == rhs._index);
                 }
 
                 /**
@@ -240,8 +239,8 @@ class MyDeque
                 // ----
                 // data
                 // ----
-
-                // <your data>
+                const MyDeque* _p;
+                std::size_t    _index;
 
             private:
                 // -----
@@ -250,8 +249,7 @@ class MyDeque
 
                 bool valid () const 
                 {
-                    // <your code>
-                    return true;
+					return _p != nullptr;
                 }
 
             public:
@@ -262,9 +260,8 @@ class MyDeque
                 /**
                  * <your documentation>
                  */
-                iterator (/* <your arguments> */) 
+                iterator (const MyDeque* p, std::size_t i) : _p(p), _index(i)
                 {
-                    // <your code>
                     assert(valid());
                 }
 
@@ -282,10 +279,9 @@ class MyDeque
                  */
                 reference operator * () const 
                 {
-                    // <your code>
-                    // dummy is just to be able to compile the skeleton, remove it
-                    static value_type dummy;
-                    return dummy;
+					assert(_index <= _p->size());
+					value_type r = _p->operator[](_index);
+					return r;
                 }
 
                 // -----------
@@ -309,7 +305,7 @@ class MyDeque
                  */
                 iterator& operator ++ () 
                 {
-                    // <your code>
+                    ++_index;
                     assert(valid());
                     return *this;
                 }
@@ -334,7 +330,7 @@ class MyDeque
                  */
                 iterator& operator -- () 
                 {
-                    // <your code>
+                    --_index;
                     assert(valid());
                     return *this;
                 }
@@ -359,7 +355,7 @@ class MyDeque
                  */
                 iterator& operator += (difference_type d) 
                 {
-                    // <your code>
+                    _index += d;
                     assert(valid());
                     return *this;
                 }
@@ -373,7 +369,7 @@ class MyDeque
                  */
                 iterator& operator -= (difference_type d) 
                 {
-                    // <your code>
+                    _index -= d;
                     assert(valid());
                     return *this;
                 }
@@ -407,8 +403,7 @@ class MyDeque
                  */
                 friend bool operator == (const const_iterator& lhs, const const_iterator& rhs) 
                 {
-                    // <your code>
-                    return true;
+                    return (lhs._p == rhs._p) && (lhs._index == rhs._index);
                 }
 
                 /**
@@ -447,17 +442,18 @@ class MyDeque
                 // ----
                 // data
                 // ----
-
-                // <your data>
+				const MyDeque* _p;
+                std::size_t    _index;
 
             private:
                 // -----
                 // valid
                 // -----
 
-                bool valid () const {
-                    // <your code>
-                    return true;}
+                bool valid () const 
+				{
+                    return _p != nullptr;
+				}
 
             public:
                 // -----------
@@ -467,9 +463,8 @@ class MyDeque
                 /**
                  * <your documentation>
                  */
-                const_iterator (/* <your arguments> */) 
+                const_iterator (const MyDeque* p, std::size_t i) : _p(p), _index(i)
                 {
-                    // <your code>
                     assert(valid());
                 }
 
@@ -487,10 +482,9 @@ class MyDeque
                  */
                 reference operator * () const 
                 {
-                    // <your code>
-                    // dummy is just to be able to compile the skeleton, remove it
-                    static value_type dummy;
-                    return dummy;
+					assert(_index <= _p->size());
+					value_type r = _p->operator[](_index);
+					return r;
                 }
 
                 // -----------
@@ -514,7 +508,7 @@ class MyDeque
                  */
                 const_iterator& operator ++ () 
                 {
-                    // <your code>
+                    ++_index;
                     assert(valid());
                     return *this;
                 }
@@ -539,7 +533,7 @@ class MyDeque
                  */
                 const_iterator& operator -- () 
                 {
-                    // <your code>
+                    --_index;
                     assert(valid());
                     return *this;
                 }
@@ -562,9 +556,9 @@ class MyDeque
                 /**
                  * <your documentation>
                  */
-                const_iterator& operator += (difference_type) 
+                const_iterator& operator += (difference_type d) 
                 {
-                    // <your code>
+                    _index += d;
                     assert(valid());
                     return *this;
                 }
@@ -576,9 +570,9 @@ class MyDeque
                 /**
                  * <your documentation>
                  */
-                const_iterator& operator -= (difference_type) 
+                const_iterator& operator -= (difference_type d) 
                 {
-                    // <your code>
+                    _index -= d;
                     assert(valid());
                     return *this;
                 }
@@ -707,10 +701,9 @@ class MyDeque
          */
         reference at (size_type index) 
         {
-            // <your code>
-            // dummy is just to be able to compile the skeleton, remove it
-            static value_type dummy;
-            return dummy;
+            if (index < 0 || index >= size())
+                throw std::out_of_range("deque::_M_range_check");
+            return (*this)[index];
         }
 
         /**
@@ -730,10 +723,8 @@ class MyDeque
          */
         reference back () 
         {
-            // <your code>
-            // dummy is just to be able to compile the skeleton, remove it
-            static value_type dummy;
-            return dummy;
+            assert(!empty());
+            return *(end() - 1);
         }
 
         /**
@@ -753,8 +744,7 @@ class MyDeque
          */
         iterator begin () 
         {
-            // <your code>
-            return iterator(/* <your arguments> */);
+            return iterator(this, 0);
         }
 
         /**
@@ -762,8 +752,7 @@ class MyDeque
          */
         const_iterator begin () const 
         {
-            // <your code>
-            return const_iterator(/* <your arguments> */);
+            return const_iterator(this, 0);
         }
 
         // -----
@@ -800,8 +789,7 @@ class MyDeque
          */
         iterator end () 
         {
-            // <your code>
-            return iterator(/* <your arguments> */);
+            return iterator(this, count);
         }
 
         /**
@@ -809,8 +797,7 @@ class MyDeque
          */
         const_iterator end () const 
         {
-            // <your code>
-            return const_iterator(/* <your arguments> */);
+            return const_iterator(this, count);
         }
 
         // -----
@@ -836,10 +823,8 @@ class MyDeque
          */
         reference front () 
         {
-            // <your code>
-            // dummy is just to be able to compile the skeleton, remove it
-            static value_type dummy;
-            return dummy;
+            assert(!empty());
+            return *begin();
         }
 
         /**
