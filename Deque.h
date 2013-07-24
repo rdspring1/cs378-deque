@@ -239,7 +239,7 @@ private:
 
 	///
 	/// Copy elements from another container to the MyDeque container's inner arrays
-	/// @tname RI - a random access iterator
+	/// @tparam RI - a random access iterator
 	/// @param add - the number of elements to be added to the MyDeque container 
 	/// @param bIter - an random access iterator at the beginning of the range to be copied
 	/// @param x - a pointer traversing the outer array of the deque
@@ -538,7 +538,7 @@ public:
 
 			/**
 			 * Addition Assignent Operator
-			 * @param rhs - the right hand side Iterator
+			 * @param d - the right hand side difference type
 			 * @return a Iterator reference shifted forward by the difference_type value
 			 */
 			iterator& operator += (difference_type d) 
@@ -554,7 +554,7 @@ public:
 
 			/**
 			 * Subtraction Assignent Operator
-			 * @param rhs - the right hand side Iterator
+			 * @param d - the right hand side difference type
 			 * @return a Iterator reference shifted backward by the difference_type value
 			 */
 			iterator& operator -= (difference_type d) 
@@ -772,7 +772,7 @@ public:
 
 			/**
 			 * Addition Assignent Operator
-			 * @param rhs - the right hand side Const_Iterator
+			 * @param d - the right hand side difference_type
 			 * @return a Const_Iterator reference shifted forward by the difference_type value
 			 */
 			const_iterator& operator += (difference_type d) 
@@ -788,7 +788,7 @@ public:
 
 			/**
 			 * Subtraction Assignent Operator
-			 * @param rhs - the right hand side Const_Iterator
+			 * @param d - the right hand side difference_type
 			 * @return a Const_Iterator reference shifted backward by the difference_type value
 			 */
 			const_iterator& operator -= (difference_type d) 
@@ -1093,7 +1093,7 @@ public:
 	/**
 	 * Erase element
 	 * @param iter - an iterator that points to the element to be removed
-	 * @param an iterator pointing to the new location of the element that followed the element erased by the function
+	 * @return an iterator pointing to the new location of the element that followed the element erased by the function
 	 */
 	iterator erase (iterator iter) 
 	{
