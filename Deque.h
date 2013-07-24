@@ -906,11 +906,22 @@ class MyDeque
         /**
          * <your documentation>
          */
-        iterator erase (iterator) 
+        iterator erase (iterator iter) 
         {
-            // <your code>
+			if(count < 1)
+				return iterator();
+
+			iterator lhs = iter;
+			iterator rhs = iter + 1;
+			destroy(a, lhs, rhs);
+			while(lhs != this->end())
+			{
+				std::swap(*rhs, *lhs);
+				++lhs;
+				++rhs;
+			}
             assert(valid());
-            return iterator();
+            return iter;
         }
 
         // -----
@@ -941,11 +952,24 @@ class MyDeque
         /**
          * <your documentation>
          */
-        iterator insert (iterator, const_reference) 
+        iterator insert (iterator iter, const_reference v) 
         {
-            // <your code>
+            // capacity = the number of elements from the allocated end to max end
+			int capacity = (ce - pe) * SIZE + (e - *pe);
+			if(capacity < 1)
+				rebuild(this->size() + 1);
+			++count;
+			iterator lhs = this->end();
+			iterator rhs = this->end() - 1;
+			while(lhs != iter)
+			{
+				std::swap(*lhs, *rhs); 
+				--lhs;
+				--rhs;
+			}
+			uninitialized_fill(a, iter, iter + 1, v);
             assert(valid());
-            return iterator();
+            return iter;
         }
 
         // ---
