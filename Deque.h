@@ -1165,9 +1165,9 @@ public:
 	{
 		destroy(_a, this->begin(), this->begin() + 1);
 		++b;
-		if(b - *pb == SIZET)
+		if(b - *pb == SIZET && count != 1)
 		{
-			--pb;
+			++pb;
 			b = *pb;
 		}
 		--count;
