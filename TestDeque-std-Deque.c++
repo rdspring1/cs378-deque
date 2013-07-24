@@ -52,13 +52,13 @@ To test the program:
 // ---------------
 ///
 /// The DequeTest class is a Google Test Fixture that creates two Deque data structures.
-/// The data structure type is either MyDeque or Project 4: Deque.
+/// The data structure type is either std::deque or Project 4: Deque.
 ///
 class DequeTest : public testing::Test 
 {
     public:
-        MyDeque<int> d1;
-        MyDeque<int> d2;
+        std::deque<int> d1;
+        std::deque<int> d2;
 };
 
 ///
@@ -67,7 +67,7 @@ class DequeTest : public testing::Test
 class DequeIterTest : public testing::Test
 {
     public:
-        MyDeque<int> d;
+        std::deque<int> d;
         
     virtual void SetUp() {
 		for(int i = 0; i < SIZE; ++i)
@@ -834,7 +834,7 @@ TEST_F(DequeTest, copy_assignement_operator_multiple)
 
 TEST_F(DequeTest, default_constructor)
 {
-    MyDeque<int> x;
+    std::deque<int> x;
     ASSERT_TRUE(d1.size() == 0);
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(x.size() == 0);
@@ -845,7 +845,7 @@ TEST_F(DequeTest, default_constructor)
 
 TEST_F(DequeTest, fill_constructor_size)
 {
-    MyDeque<int> x(SIZE);
+    std::deque<int> x(SIZE);
     for(int i = 0; i < SIZE; ++i)
         EXPECT_TRUE(x[i] == 0);
     ASSERT_TRUE(x.size() == SIZE);
@@ -853,7 +853,7 @@ TEST_F(DequeTest, fill_constructor_size)
 
 TEST_F(DequeTest, fill_constructor_value)
 {
-    MyDeque<int> x(SIZE, SIZE);
+    std::deque<int> x(SIZE, SIZE);
     for(int i = 0; i < SIZE; ++i)
         ASSERT_TRUE(x[i] == SIZE);
     ASSERT_TRUE(x.size() == SIZE);
@@ -867,7 +867,7 @@ TEST_F(DequeTest, copy_constructor)
     d1.push_back(1);
     ASSERT_TRUE(d1.front() == 1);
     ASSERT_TRUE(d1.size() == 1);
-    MyDeque<int> x(d1);
+    std::deque<int> x(d1);
     ASSERT_TRUE(x.front() == 1);
     ASSERT_TRUE(x.size() == 1);
     ASSERT_TRUE(x == d1);
@@ -879,7 +879,7 @@ TEST_F(DequeTest, copy_constructor_empty)
     ASSERT_TRUE(d1.size() == 0);
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(d1 == d2);
-    MyDeque<int> x(d1);
+    std::deque<int> x(d1);
     ASSERT_TRUE(d1.size() == 0);
     ASSERT_TRUE(d2.size() == 0);
     ASSERT_TRUE(x.size() == 0);
@@ -899,7 +899,7 @@ TEST_F(DequeTest, copy_constructor_multiple)
     ASSERT_TRUE(d1[2] == 9);
     ASSERT_TRUE(d1[3] == 10);
     ASSERT_TRUE(d1.size() == 4);   
-    MyDeque<int> x(d1);
+    std::deque<int> x(d1);
     ASSERT_TRUE(d1[0] == 7);
     ASSERT_TRUE(d1[1] == 8);
     ASSERT_TRUE(d1[2] == 9);
@@ -927,8 +927,8 @@ TEST_F(DequeIterTest, for_each_read)
 TEST_F(DequeIterTest, iter_read)
 {
     int count = 0;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         ASSERT_TRUE(*b == count);
@@ -940,8 +940,8 @@ TEST_F(DequeIterTest, iter_read)
 TEST_F(DequeIterTest, iter_update)
 {
     int count = 0;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         ASSERT_TRUE(*b == count);
@@ -964,8 +964,8 @@ TEST_F(DequeIterTest, iter_update)
 TEST_F(DequeIterTest, reverse_iter_read)
 {
     int count = SIZE;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         --e;
@@ -977,8 +977,8 @@ TEST_F(DequeIterTest, reverse_iter_read)
 TEST_F(DequeIterTest, reverse_iter_update)
 {
     int count = SIZE;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         --e;
@@ -1001,8 +1001,8 @@ TEST_F(DequeIterTest, reverse_iter_update)
 TEST_F(DequeIterTest, const_iter_read)
 {
     int count = 0;
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     while(cb != ce)
     {
         ASSERT_TRUE(*cb == count);
@@ -1014,8 +1014,8 @@ TEST_F(DequeIterTest, const_iter_read)
 TEST_F(DequeIterTest, const_reverse_iter_read)
 {
     int count = SIZE;
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     while(cb != ce)
     {
         --ce;
@@ -1027,8 +1027,8 @@ TEST_F(DequeIterTest, const_reverse_iter_read)
 TEST_F(DequeIterTest, iter_read_plus_equal)
 {
     int count = 0;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         ASSERT_TRUE(*b == count);
@@ -1040,8 +1040,8 @@ TEST_F(DequeIterTest, iter_read_plus_equal)
 TEST_F(DequeIterTest, iter_update_plus_equal)
 {
     int count = 0;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         ASSERT_TRUE(*b == count);
@@ -1064,8 +1064,8 @@ TEST_F(DequeIterTest, iter_update_plus_equal)
 TEST_F(DequeIterTest, reverse_iter_read_minus_equal)
 {
     int count = SIZE;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         e -= 1;
@@ -1077,8 +1077,8 @@ TEST_F(DequeIterTest, reverse_iter_read_minus_equal)
 TEST_F(DequeIterTest, reverse_iter_update_minus_equal)
 {
     int count = SIZE;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     while(b != e)
     {
         e -= 1;
@@ -1101,8 +1101,8 @@ TEST_F(DequeIterTest, reverse_iter_update_minus_equal)
 TEST_F(DequeIterTest, const_iter_read_plus_equal)
 {
     int count = 0;
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     while(cb != ce)
     {
         ASSERT_TRUE(*cb == count);
@@ -1114,8 +1114,8 @@ TEST_F(DequeIterTest, const_iter_read_plus_equal)
 TEST_F(DequeIterTest, const_reverse_iter_read_minus_equal)
 {
     int count = SIZE;
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     while(cb != ce)
     {
         ce -= 1;
@@ -1127,7 +1127,7 @@ TEST_F(DequeIterTest, const_reverse_iter_read_minus_equal)
 TEST_F(DequeIterTest, iter_read_plus_equal_ten)
 {
     int count = 0;
-    MyDeque<int>::iterator b = d.begin();
+    std::deque<int>::iterator b = d.begin();
     while((size_t) count < d.size())
     {
         ASSERT_TRUE(*b == count);
@@ -1139,7 +1139,7 @@ TEST_F(DequeIterTest, iter_read_plus_equal_ten)
 TEST_F(DequeIterTest, reverse_iter_read_plus_equal_ten)
 {
     int count = SIZE;
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator e = d.end();
     while(count >= 10)
     {
         e += -10;
@@ -1151,7 +1151,7 @@ TEST_F(DequeIterTest, reverse_iter_read_plus_equal_ten)
 TEST_F(DequeIterTest, iter_read_minus_equal_ten)
 {
     int count = 0;
-    MyDeque<int>::iterator b = d.begin();
+    std::deque<int>::iterator b = d.begin();
     while((size_t) count < d.size())
     {
         ASSERT_TRUE(*b == count);
@@ -1163,7 +1163,7 @@ TEST_F(DequeIterTest, iter_read_minus_equal_ten)
 TEST_F(DequeIterTest, reverse_iter_read_minus_equal_ten)
 {
     int count = SIZE;
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator e = d.end();
     while(count >= 10)
     {
         e -= 10;
@@ -1175,7 +1175,7 @@ TEST_F(DequeIterTest, reverse_iter_read_minus_equal_ten)
 TEST_F(DequeIterTest, const_iter_read_plus_equal_ten)
 {
     int count = 0;
-    MyDeque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator cb = d.begin();
     while((size_t) count < d.size())
     {
         ASSERT_TRUE(*cb == count);
@@ -1187,7 +1187,7 @@ TEST_F(DequeIterTest, const_iter_read_plus_equal_ten)
 TEST_F(DequeIterTest, const_reverse_iter_read_plus_equal_ten)
 {
     int count = SIZE;
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator ce = d.end();
     while(count >= 10)
     {
         ce += -10;
@@ -1199,7 +1199,7 @@ TEST_F(DequeIterTest, const_reverse_iter_read_plus_equal_ten)
 TEST_F(DequeIterTest, const_iter_read_minus_equal_ten)
 {
     int count = 0;
-    MyDeque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator cb = d.begin();
     while((size_t) count < d.size())
     {
         ASSERT_TRUE(*cb == count);
@@ -1211,7 +1211,7 @@ TEST_F(DequeIterTest, const_iter_read_minus_equal_ten)
 TEST_F(DequeIterTest, const_reverse_iter_read_minus_equal_ten)
 {
     int count = SIZE;
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator ce = d.end();
     while(count >= 10)
     {
         ce -= 10;
@@ -1227,8 +1227,8 @@ TEST_F(DequeIterTest, iter_max_elem)
 
 TEST_F(DequeIterTest, const_iter_max_elem)
 {
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     ASSERT_TRUE(*std::max_element(cb, ce) == ((int) d.size() - 1));
 }
 
@@ -1239,8 +1239,8 @@ TEST_F(DequeIterTest, iter_min_elem)
 
 TEST_F(DequeIterTest, const_iter_min_elem)
 {
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     ASSERT_TRUE(*std::min_element(cb, ce) == 0);
 }
 
@@ -1257,8 +1257,8 @@ TEST_F(DequeIterTest, iter_fill_n)
     ASSERT_TRUE(d.front() == (int) d.size());
     
     int count = 1;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::iterator e = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::iterator e = d.end();
     ++b;
     while(b != e)
     {
@@ -1277,9 +1277,9 @@ TEST_F(DequeIterTest, iter_fill_n_max)
 
 TEST_F(DequeIterTest, iter_plus)
 {
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     std::transform(cb, ce, b, std::bind2nd(std::plus<int>(), 1));
     ASSERT_TRUE(d.front() == 1);
     
@@ -1293,9 +1293,9 @@ TEST_F(DequeIterTest, iter_plus)
 
 TEST_F(DequeIterTest, iter_minus)
 {
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     std::transform(cb, ce, b, std::bind2nd(std::minus<int>(), 1));
     ASSERT_TRUE(d.front() == -1);
     
@@ -1310,9 +1310,9 @@ TEST_F(DequeIterTest, iter_minus)
 TEST_F(DequeIterTest, iter_multiply)
 {
     int multiple = 2;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     std::transform(cb, ce, b, std::bind2nd(std::multiplies<int>(), multiple));
     ASSERT_TRUE(d.front() == 0);
     
@@ -1327,9 +1327,9 @@ TEST_F(DequeIterTest, iter_multiply)
 TEST_F(DequeIterTest, iter_divide)
 {
     int denominator = 2;
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     std::transform(cb, ce, b, std::bind2nd(std::divides<int>(), denominator));
     ASSERT_TRUE(d.front() == 0);
     
@@ -1343,9 +1343,9 @@ TEST_F(DequeIterTest, iter_divide)
 
 TEST_F(DequeIterTest, iter_negate)
 {
-    MyDeque<int>::iterator b = d.begin();
-    MyDeque<int>::const_iterator cb = d.begin();
-    MyDeque<int>::const_iterator ce = d.end();
+    std::deque<int>::iterator b = d.begin();
+    std::deque<int>::const_iterator cb = d.begin();
+    std::deque<int>::const_iterator ce = d.end();
     std::transform(cb, ce, b, std::negate<int>());
     ASSERT_TRUE(d.front() == 0);
     
@@ -1365,7 +1365,7 @@ TEST_F(DequeIterTest, iter_replace)
 
 TEST_F(DequeSingleTest, default_argument_constructor)
 {
-    MyDeque<int> x(10);
+    std::deque<int> x(10);
     assert(!x.empty());
     assert(x.size()                                     == 10);
     assert(std::count(x.begin(), x.end(), value_type()) == 10);
@@ -1373,7 +1373,7 @@ TEST_F(DequeSingleTest, default_argument_constructor)
 
 TEST_F(DequeSingleTest, default_argument_constructor)
 {
-    const MyDeque<int> x(10, v1);
+    const std::deque<int> x(10, v1);
     assert(!x.empty());
     assert(x.size()                           == 10);
     assert(std::count(x.begin(), x.end(), v1) == 10);
@@ -1381,11 +1381,11 @@ TEST_F(DequeSingleTest, default_argument_constructor)
 
 TEST_F(DequeSingleTest, push_pop_back)
 {
-    MyDeque<int> x;
+    std::deque<int> x;
     x.push_back(v1);
     x.push_back(v2);
     x.push_back(v3);
-    MyDeque<int> y(x);
+    std::deque<int> y(x);
     assert(x == y);
     y.pop_back();
     assert(x.size() == 3);
@@ -1396,11 +1396,11 @@ TEST_F(DequeSingleTest, push_pop_back)
     
 TEST_F(DequeSingleTest, push_pop_back_copy_assignment)
 {
-    MyDeque<int> x;
+    std::deque<int> x;
     x.push_back(v1);
     x.push_back(v2);
     x.push_back(v3);
-    MyDeque<int> y;
+    std::deque<int> y;
     y.push_back(v3);
     y.push_back(v1);
     assert(x != y);
@@ -1415,11 +1415,11 @@ TEST_F(DequeSingleTest, push_pop_back_copy_assignment)
 
 TEST_F(DequeSingleTest, push_back_swap)
 {
-    MyDeque<int> x;
+    std::deque<int> x;
     x.push_back(v1);
     x.push_back(v2);
     x.push_back(v3);
-    MyDeque<int> y;
+    std::deque<int> y;
     y.push_back(v1);
     y.push_back(v2);
     x.swap(y);
@@ -1431,18 +1431,18 @@ TEST_F(DequeSingleTest, push_back_swap)
 
 TEST_F(DequeSingleTest, push_back_copy)
 {
-    MyDeque<int> x;
+    std::deque<int> x;
     x.push_back(v1);
     x.push_back(v2);
     x.push_back(v3);
-    MyDeque<int> y(x.size());
+    std::deque<int> y(x.size());
     std::copy(x.begin(), x.end(), y.begin());
     assert(std::equal(x.begin(), x.end(), y.begin()));
 }
 
 TEST_F(DequeSingleTest, back_front_push_back)
 {
-    MyDeque<int> x;
+    std::deque<int> x;
     x.push_back(v1);
     x.push_back(v2);
     x.push_back(v3);
@@ -1456,11 +1456,11 @@ TEST_F(DequeSingleTest, back_front_push_back)
 
 TEST_F(DequeSingleTest, push_back_rel_ops)
 {
-    MyDeque<int> x;
+    std::deque<int> x;
     x.push_back(v1);
     x.push_back(v2);
     x.push_back(v3);
-    MyDeque<int> y;
+    std::deque<int> y;
     y.push_back(v1);
     y.push_back(v2);
     y.push_back(v3);
