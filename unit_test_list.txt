@@ -64,3 +64,12 @@ Project 4: Deque
 + Implement the copy assignment operator (=)
 + Implement Insert and Erase Functions
 + Fixed Insert and Erase Functions
+
+-------------- Unit Test 7/24/2013 --------------
+[  FAILED  ] 5 tests, listed below:
+[  FAILED  ] DequeTest.pop_front_random
+[  FAILED  ] DequeTest.insert_random
+[  FAILED  ] DequeTest.copy_assignement_operator_multiple
+[  FAILED  ] DequeSingleTest.push_pop_back_copy_assignment
+[  FAILED  ] DequeSingleTest.push_back_swap
+
