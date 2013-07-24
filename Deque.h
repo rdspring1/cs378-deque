@@ -176,9 +176,8 @@ class MyDeque
 		///
 		/// <your documentation>
 		///
-		void ia_fill (int add, const_reference v)
+		void ia_fill (int add, const_reference v, pointer* x)
 		{
-			pointer* x = pb;
 			for(; add > 0; add -= SIZE)
 			{
 				size_type inner_array = (add >= SIZE) ? SIZE : add;
@@ -191,9 +190,8 @@ class MyDeque
 		/// <your documentation>
 		///
 		template<typename I>
-		void ia_copy (int add, I bIter)
+		void ia_copy (int add, I bIter, pointer* x)
 		{
-			pointer* x = pb;
 			I eIter = bIter;
 			for(; add > 0; add -= SIZE)
 			{
@@ -243,7 +241,7 @@ class MyDeque
 			pe = pb + copy_array;
 			ce = cb + outer_array;
 			allocate(cb);
-			ia_copy(that.size(), that.begin());
+			ia_copy(that.size(), that.begin(), pb);
 			count = that.size();
             assert(valid());
 		}
@@ -700,7 +698,7 @@ class MyDeque
 			pe = pb + outer_array;
 			ce = cb + outer_array;
 			allocate(cb);
-			ia_copy(that.size(), that.begin());
+			ia_copy(that.size(), that.begin(), pb);
             assert(valid());
         }
 
@@ -951,7 +949,8 @@ class MyDeque
          */
         void pop_back () 
         {
-            // <your code>
+            assert(!empty());
+            resize(size() - 1);
             assert(valid());
         }
 
@@ -971,9 +970,9 @@ class MyDeque
         /**
          * <your documentation>
          */
-        void push_back (const_reference) 
+        void push_back (const_reference v) 
         {
-            // <your code>
+			resize(this->size() + 1, v);
             assert(valid());
         }
 
@@ -1015,17 +1014,18 @@ class MyDeque
 			{
 				int add = s - this->size();
 				int ia_remain = SIZE - (e - *pe);
-				if(ia_remain != 0 && ia_remain != SIZE)
+				if(ia_remain != 0)
 				{
-					uninitialized_fill(_a, this->end(), this->end() + ia_remain, v);
-					e += ia_remain;
-					add -= ia_remain;
+					int fillsize = std::min(add, ia_remain);
+					uninitialized_fill(_a, e, e + fillsize, v);
+					e += fillsize;
+					add -= fillsize;
 				}
 
 				if(add != 0)
 				{
 					++pe;
-					ia_fill(add, v);
+					ia_fill(add, v, pe);
 				}
 				count = s;
 			}
