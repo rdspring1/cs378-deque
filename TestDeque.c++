@@ -773,7 +773,7 @@ TEST_F(DequeTest, at_empty)
 	}
 }
 
-TEST_F(DequeTest, copy_assignement_operator)
+TEST_F(DequeTest, copy_assignment_operator)
 {
 	ASSERT_TRUE(d1.size() == 0);
 	ASSERT_TRUE(d2.size() == 0);
@@ -1382,17 +1382,17 @@ TEST_F(DequeIterTest, iter_replace)
 TEST_F(DequeSingleTest, default_size_constructor)
 {
 	MyDeque<int> x(10);
-	assert(!x.empty());
-	assert(x.size()                                     == 10);
-	assert(std::count(x.begin(), x.end(), MyDeque<int>::value_type()) == 10);
+	ASSERT_TRUE(!x.empty());
+	ASSERT_TRUE(x.size()                                     == 10);
+	ASSERT_TRUE(std::count(x.begin(), x.end(), MyDeque<int>::value_type()) == 10);
 }
 
 TEST_F(DequeSingleTest, default_argument_constructor)
 {
 	const MyDeque<int> x(10, v1);
-	assert(!x.empty());
-	assert(x.size()                           == 10);
-	assert(std::count(x.begin(), x.end(), v1) == 10);
+	ASSERT_TRUE(!x.empty());
+	ASSERT_TRUE(x.size()                           == 10);
+	ASSERT_TRUE(std::count(x.begin(), x.end(), v1) == 10);
 }
 
 TEST_F(DequeSingleTest, push_pop_back)
@@ -1402,12 +1402,12 @@ TEST_F(DequeSingleTest, push_pop_back)
 	x.push_back(v2);
 	x.push_back(v3);
 	MyDeque<int> y(x);
-	assert(x == y);
+	ASSERT_TRUE(x == y);
 	y.pop_back();
-	assert(x.size() == 3);
-	assert(x.back() == v3);
-	assert(y.size() == 2);
-	assert(y.back() == v2);
+	ASSERT_TRUE(x.size() == 3);
+	ASSERT_TRUE(x.back() == v3);
+	ASSERT_TRUE(y.size() == 2);
+	ASSERT_TRUE(y.back() == v2);
 }
 
 TEST_F(DequeSingleTest, push_pop_back_copy_assignment)
@@ -1419,14 +1419,14 @@ TEST_F(DequeSingleTest, push_pop_back_copy_assignment)
 	MyDeque<int> y;
 	y.push_back(v3);
 	y.push_back(v1);
-	assert(x != y);
+	ASSERT_TRUE(x != y);
 	y = x;
-	assert(x == y);
+	ASSERT_TRUE(x == y);
 	y.pop_back();
-	assert(x.size() == 3);
-	assert(x.back() == v3);
-	assert(y.size() == 2);
-	assert(y.back() == v2);
+	ASSERT_TRUE(x.size() == 3);
+	ASSERT_TRUE(x.back() == v3);
+	ASSERT_TRUE(y.size() == 2);
+	ASSERT_TRUE(y.back() == v2);
 }
 
 TEST_F(DequeSingleTest, push_back_swap)
@@ -1439,10 +1439,10 @@ TEST_F(DequeSingleTest, push_back_swap)
 	y.push_back(v1);
 	y.push_back(v2);
 	x.swap(y);
-	assert(x.size() == 2);
-	assert(x.back() == v2);
-	assert(y.size() == 3);
-	assert(y.back() == v3);
+	ASSERT_TRUE(x.size() == 2);
+	ASSERT_TRUE(x.back() == v2);
+	ASSERT_TRUE(y.size() == 3);
+	ASSERT_TRUE(y.back() == v3);
 }
 
 TEST_F(DequeSingleTest, push_back_copy)
@@ -1453,7 +1453,7 @@ TEST_F(DequeSingleTest, push_back_copy)
 	x.push_back(v3);
 	MyDeque<int> y(x.size());
 	std::copy(x.begin(), x.end(), y.begin());
-	assert(std::equal(x.begin(), x.end(), y.begin()));
+	ASSERT_TRUE(std::equal(x.begin(), x.end(), y.begin()));
 }
 
 TEST_F(DequeSingleTest, back_front_push_back)
@@ -1462,12 +1462,12 @@ TEST_F(DequeSingleTest, back_front_push_back)
 	x.push_back(v1);
 	x.push_back(v2);
 	x.push_back(v3);
-	assert(x.front() == v1);
+	ASSERT_TRUE(x.front() == v1);
 	x.front() = v2;
-	assert(x.front() == v2);
-	assert(x.back()  == v3);
+	ASSERT_TRUE(x.front() == v2);
+	ASSERT_TRUE(x.back()  == v3);
 	x.back()  = v2;
-	assert(x.back()  == v2);
+	ASSERT_TRUE(x.back()  == v2);
 }
 
 TEST_F(DequeSingleTest, push_back_rel_ops)
@@ -1480,10 +1480,10 @@ TEST_F(DequeSingleTest, push_back_rel_ops)
 	y.push_back(v1);
 	y.push_back(v2);
 	y.push_back(v3);
-	assert(x == y);
-	assert(x <= y);
-	assert(x >= y);
-	assert(!(x != y));
-	assert(!(x <  y));
-	assert(!(x >  y));
+	ASSERT_TRUE(x == y);
+	ASSERT_TRUE(x <= y);
+	ASSERT_TRUE(x >= y);
+	ASSERT_TRUE(!(x != y));
+	ASSERT_TRUE(!(x <  y));
+	ASSERT_TRUE(!(x >  y));
 }

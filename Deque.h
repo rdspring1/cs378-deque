@@ -771,12 +771,15 @@ class MyDeque
 			}
 
 			// Regenerate pe and e pointers
-			size_type offsetBOA = pb - cb;
-			size_type offsetBIA = b - *pb;
-			size_type outer_array_index = (this->size() - 1 + offsetBIA) / SIZET + offsetBOA;
-			size_type inner_array_index = (this->size() - 1 + offsetBIA) % SIZET;
-			pe = cb + outer_array_index;
-			e = *pe + inner_array_index;
+			if(cb != nullptr)
+			{
+				size_type offsetBOA = pb - cb;
+				size_type offsetBIA = b - *pb;
+				size_type outer_array_index = (this->size() + offsetBIA) / SIZET + offsetBOA;
+				size_type inner_array_index = (this->size() + offsetBIA) % SIZET;
+				pe = cb + outer_array_index;
+				e = *pe + inner_array_index;
+			}
 
 			assert(valid());
 			return *this;
