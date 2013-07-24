@@ -1301,6 +1301,7 @@ public:
 			std::swap(pe, that.pe);
 			std::swap(b, that.b);
 			std::swap(e, that.e);
+			std::swap(count, that.count);
 		}
 		else 
 		{
