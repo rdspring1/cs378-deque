@@ -59,7 +59,7 @@ valid
 Project 4: Deque
 + Implemented Destructor; Parts of Resize
 + Completed Resize; Implemented Rebuild function
-+ Implement Push_Back and Pop_Front function; Fixed Resize Function -Capacity
++ Implement Push_Back and Pop_Back function; Fixed Resize Function - Capacity
 + Implement Push_Front and Pop_front function; Fixed Resize Function - Size
 + Implement the copy assignment operator (=)
 + Implement Insert and Erase Functions

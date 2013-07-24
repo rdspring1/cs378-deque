@@ -213,7 +213,7 @@ class MyDeque
 				*_b = _a.allocate(SIZE);
 				++_b;
 			}
-			b = pb[0];
+			b = pb[0] + SIZE - 1;
 			e = pe[0];
 		}
 
@@ -959,7 +959,14 @@ class MyDeque
          */
         void pop_front () 
         {
-            // <your code>
+            destroy(_a, this->begin(), this->begin() + 1);
+			++b;
+			if(b - *pb == SIZE)
+			{
+				--pb;
+				b = *pb;
+			}
+			--count;
             assert(valid());
         }
 
@@ -979,10 +986,25 @@ class MyDeque
         /**
          * <your documentation>
          */
-        void push_front (const_reference) 
+        void push_front (const_reference v) 
         {
-            // <your code>
-            assert(valid());
+			// Check capacity
+			if(cb == nullptr || *cb == b)
+				rebuild(this->size() + 1);
+
+			int ia_remain = SIZE - (b - *pb);
+			if(ia_remain == 0)
+			{
+				++pb;
+				b = *pb + SIZE - 1;
+			}
+			else
+			{
+				--b;
+			}
+			uninitialized_fill(_a, this->begin(), this->begin() + 1, v);
+			++count;            
+			assert(valid());
         }
 
         // ------
@@ -1008,7 +1030,8 @@ class MyDeque
 				size_type inner_array_index = (index + offsetBIA) % SIZE;
 				pe = cb + outer_array_index;
 				e = *pe + inner_array_index;
-                destroy(_a, begin() + s, end());
+                destroy(_a, this->begin() + s, this->end());
+				count = s;
 			}
 			else if (s <= capacity)
 			{
