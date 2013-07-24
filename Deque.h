@@ -740,29 +740,41 @@ class MyDeque
 
 			// capacity = the number of elements from the allocated end to max end
 			int capacity = (ce - pe) * SIZE + (e - *pe);
-            if (that.size() == size())
+            if (that.size() == this->size())
 			{
                 // Equal Size
-				std::copy(that.begin(), that.end(), begin());
+				std::copy(that.begin(), that.end(), this->begin());
 			}
-            else if (that.size() < size()) 
+            else if (that.size() < this->size()) 
 			{
                 // Less than Size
-				std::copy(that.begin(), that.end(), begin());
+				std::copy(that.begin(), that.end(), this->begin());
+				count = that.size();
 			}
             else if (that.size() <= capacity) 
 			{
                 // Less than or equal to capacity
-				std::copy(that.begin(), that.begin() + size(), begin());
-                e = uninitialized_copy(_a, that.begin() + size(), that.end(), this->end());
+				std::copy(that.begin(), that.begin() + size(), this->begin());
+                uninitialized_copy(_a, that.begin() + that.size(), that.end(), this->end());
+				count = that.size();
 			}
             else 
 			{
                 // Greater than capacity
 				clear();
 				rebuild(that.size());
-				e = uninitialized_copy(_a, that.begin(), that.end(), this->begin());
+				uninitialized_copy(_a, that.begin(), that.end(), this->begin());
+				count = that.size();
 			}
+
+			// Regenerate pe and e pointers
+			size_type offsetBOA = pb - cb;
+            size_type offsetBIA = b - *pb;
+			size_type outer_array_index = (this->size() - 1 + offsetBIA) / SIZE + offsetBOA;
+			size_type inner_array_index = (this->size() - 1 + offsetBIA) % SIZE;
+			pe = cb + outer_array_index;
+			e = *pe + inner_array_index;
+
             assert(valid());
             return *this;
         }
@@ -909,11 +921,11 @@ class MyDeque
         iterator erase (iterator iter) 
         {
 			if(count < 1)
-				return iterator();
-
+				return this->begin();
+			--count;
 			iterator lhs = iter;
 			iterator rhs = iter + 1;
-			destroy(a, lhs, rhs);
+			destroy(_a, lhs, rhs);
 			while(lhs != this->end())
 			{
 				std::swap(*rhs, *lhs);
@@ -959,15 +971,15 @@ class MyDeque
 			if(capacity < 1)
 				rebuild(this->size() + 1);
 			++count;
-			iterator lhs = this->end();
-			iterator rhs = this->end() - 1;
+			iterator lhs = this->end() - 1;
+			iterator rhs = this->end() - 2;
 			while(lhs != iter)
 			{
-				std::swap(*lhs, *rhs); 
+				std::swap(*lhs, *rhs);
 				--lhs;
 				--rhs;
 			}
-			uninitialized_fill(a, iter, iter + 1, v);
+			uninitialized_fill(_a, iter, iter + 1, v);
             assert(valid());
             return iter;
         }
