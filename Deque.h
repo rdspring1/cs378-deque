@@ -332,6 +332,240 @@ private:
 	}
 
 public:
+	// --------------
+	// const_iterator
+	// --------------
+
+	///
+	/// A const bidirectional iterator for the MyDeque class
+	///
+	class const_iterator 
+	{
+		public:
+			// --------
+			// typedefs
+			// --------
+
+			typedef std::bidirectional_iterator_tag   iterator_category;
+			typedef typename MyDeque::value_type      value_type;
+			typedef typename MyDeque::difference_type difference_type;
+			typedef typename MyDeque::const_pointer   pointer;
+			typedef typename MyDeque::const_reference reference;
+
+		public:
+			// -----------
+			// operator ==
+			// -----------
+
+			/**
+			 * equal operator
+			 * @param lhs - the left hand side Const_Iterator
+			 * @param rhs - the right hand side Const_Iterator
+			 * @return true if the lhs Const_Iterator is equal to the rhs Const_Iterator
+			 */
+			friend bool operator == (const const_iterator& lhs, const const_iterator& rhs) 
+			{
+				return (lhs._p == rhs._p) && (lhs._index == rhs._index);
+			}
+
+			/**
+			 * not equal operator
+			 * @param lhs - the left hand side Const_Iterator
+			 * @param rhs - the right hand side Const_Iterator
+			 * @return true if the lhs Const_Iterator is not equal to the rhs Const_Iterator
+			 */
+			friend bool operator != (const const_iterator& lhs, const const_iterator& rhs) 
+			{
+				return !(lhs == rhs);
+			}
+
+			// ----------
+			// operator +
+			// ----------
+
+			/**
+			 * addition operator
+			 * @param lhs - the left hand side Const_Iterator
+			 * @param rhs - the right hand side difference_type
+			 * @return an Const_Iterator shifted forward by the difference_type value
+			 */
+			friend const_iterator operator + (const_iterator lhs, difference_type rhs) 
+			{
+				return lhs += rhs;
+			}
+
+			// ----------
+			// operator -
+			// ----------
+
+			/**
+			 * subtraction operator
+			 * @param lhs - the left hand side Const_Iterator
+			 * @param rhs - the right hand side difference_type
+			 * @return an Const_Iterator shifted backward by the difference_type value
+			 */
+			friend const_iterator operator - (const_iterator lhs, difference_type rhs) 
+			{
+				return lhs -= rhs;
+			}
+
+		private:
+			// ----
+			// data
+			// ----
+			const MyDeque* _p;
+			size_type    _index;
+
+		private:
+			// -----
+			// valid
+			// -----
+
+			/**
+			 * @return true if the Const_Iterator object is in a valid state
+			 */
+			bool valid () const 
+			{
+				return _p != nullptr;
+			}
+
+		public:
+			// -----------
+			// constructor
+			// -----------
+
+			/**
+			 * Create an Const_Iterator object using the MyDeque container
+			 * @param p - a const pointer to the MyDeque container
+			 * @param i - index state for the Const_Iterator
+			 */
+			const_iterator (const MyDeque* p = nullptr, size_type i = 0) : _p(p), _index(i)
+			{
+				assert(valid());
+			}
+
+			// Default copy, destructor, and copy assignment.
+			// const_iterator (const const_iterator&);
+			// ~const_iterator ();
+			// const_iterator& operator = (const const_iterator&);
+
+			// ----------
+			// operator *
+			// ----------
+
+			/**
+			 * dereference operator
+			 * @return a reference to the value in the Const_Iterator's current state
+			 */
+			reference operator * () const 
+			{
+				assert(_index <= _p->size());
+				return _p->operator[](_index);
+			}
+
+			// -----------
+			// operator ->
+			// -----------
+
+			/**
+			 * pointer member access operator
+			 * @return a pointer to the value in the Const_Iterator's current state
+			 */
+			pointer operator -> () const 
+			{
+				return &**this;
+			}
+
+			// -----------
+			// operator ++
+			// -----------
+
+			/**
+			 * Pre-increment Operator
+			 * @return a Const_Iterator reference incremented by 1
+			 */
+			const_iterator& operator ++ () 
+			{
+				++_index;
+				assert(valid());
+				return *this;
+			}
+
+			/**
+			 * Post-Increment Operator
+			 * Does not effect the Const_Iterator argument
+			 * @return an Const_Iterator incremented by 1
+			 */
+			const_iterator operator ++ (int) 
+			{
+				const_iterator x = *this;
+				++(*this);
+				assert(valid());
+				return x;
+			}
+
+			// -----------
+			// operator --
+			// -----------
+
+			/**
+			 * Pre-decrement Operator
+			 * @return a Const_Iterator reference decremented by 1
+			 */
+			const_iterator& operator -- () 
+			{
+				--_index;
+				assert(valid());
+				return *this;
+			}
+
+			/**
+			 * Post-Decrement Operator
+			 * Does not effect the Const_Iterator argument
+			 * @return an Const_Iterator decremented by 1
+			 */
+			const_iterator operator -- (int) 
+			{
+				const_iterator x = *this;
+				--(*this);
+				assert(valid());
+				return x;
+			}
+
+			// -----------
+			// operator +=
+			// -----------
+
+			/**
+			 * Addition Assignent Operator
+			 * @param d - the right hand side difference_type
+			 * @return a Const_Iterator reference shifted forward by the difference_type value
+			 */
+			const_iterator& operator += (difference_type d) 
+			{
+				_index += d;
+				assert(valid());
+				return *this;
+			}
+
+			// -----------
+			// operator -=
+			// -----------
+
+			/**
+			 * Subtraction Assignent Operator
+			 * @param d - the right hand side difference_type
+			 * @return a Const_Iterator reference shifted backward by the difference_type value
+			 */
+			const_iterator& operator -= (difference_type d) 
+			{
+				_index -= d;
+				assert(valid());
+				return *this;
+			}
+	};
+
+public:
 	// --------
 	// iterator
 	// --------
@@ -439,10 +673,10 @@ public:
 			 * @param p - a pointer to the MyDeque container
 			 * @param i - index state for the Iterator
 			 */
-			iterator (MyDeque* p, size_type i) : _p(p), _index(i)
-		{
-			assert(valid());
-		}
+			iterator (MyDeque* p = nullptr, size_type i = 0) : _p(p), _index(i)
+			{
+				assert(valid());
+			}
 
 			// Default copy, destructor, and copy assignment.
 			// iterator (const iterator&);
@@ -563,239 +797,10 @@ public:
 				assert(valid());
 				return *this;
 			}
-	};
 
-public:
-	// --------------
-	// const_iterator
-	// --------------
-
-	///
-	/// A const bidirectional iterator for the MyDeque class
-	///
-	class const_iterator 
-	{
-		public:
-			// --------
-			// typedefs
-			// --------
-
-			typedef std::bidirectional_iterator_tag   iterator_category;
-			typedef typename MyDeque::value_type      value_type;
-			typedef typename MyDeque::difference_type difference_type;
-			typedef typename MyDeque::const_pointer   pointer;
-			typedef typename MyDeque::const_reference reference;
-
-		public:
-			// -----------
-			// operator ==
-			// -----------
-
-			/**
-			 * equal operator
-			 * @param lhs - the left hand side Const_Iterator
-			 * @param rhs - the right hand side Const_Iterator
-			 * @return true if the lhs Const_Iterator is equal to the rhs Const_Iterator
-			 */
-			friend bool operator == (const const_iterator& lhs, const const_iterator& rhs) 
+			operator const_iterator ()
 			{
-				return (lhs._p == rhs._p) && (lhs._index == rhs._index);
-			}
-
-			/**
-			 * not equal operator
-			 * @param lhs - the left hand side Const_Iterator
-			 * @param rhs - the right hand side Const_Iterator
-			 * @return true if the lhs Const_Iterator is not equal to the rhs Const_Iterator
-			 */
-			friend bool operator != (const const_iterator& lhs, const const_iterator& rhs) 
-			{
-				return !(lhs == rhs);
-			}
-
-			// ----------
-			// operator +
-			// ----------
-
-			/**
-			 * addition operator
-			 * @param lhs - the left hand side Const_Iterator
-			 * @param rhs - the right hand side difference_type
-			 * @return an Const_Iterator shifted forward by the difference_type value
-			 */
-			friend const_iterator operator + (const_iterator lhs, difference_type rhs) 
-			{
-				return lhs += rhs;
-			}
-
-			// ----------
-			// operator -
-			// ----------
-
-			/**
-			 * subtraction operator
-			 * @param lhs - the left hand side Const_Iterator
-			 * @param rhs - the right hand side difference_type
-			 * @return an Const_Iterator shifted backward by the difference_type value
-			 */
-			friend const_iterator operator - (const_iterator lhs, difference_type rhs) 
-			{
-				return lhs -= rhs;
-			}
-
-		private:
-			// ----
-			// data
-			// ----
-			const MyDeque* _p;
-			size_type    _index;
-
-		private:
-			// -----
-			// valid
-			// -----
-
-			/**
-			 * @return true if the Const_Iterator object is in a valid state
-			 */
-			bool valid () const 
-			{
-				return _p != nullptr;
-			}
-
-		public:
-			// -----------
-			// constructor
-			// -----------
-
-			/**
-			 * Create an Const_Iterator object using the MyDeque container
-			 * @param p - a const pointer to the MyDeque container
-			 * @param i - index state for the Const_Iterator
-			 */
-			const_iterator (const MyDeque* p, size_type i) : _p(p), _index(i)
-		{
-			assert(valid());
-		}
-
-			// Default copy, destructor, and copy assignment.
-			// const_iterator (const const_iterator&);
-			// ~const_iterator ();
-			// const_iterator& operator = (const const_iterator&);
-
-			// ----------
-			// operator *
-			// ----------
-
-			/**
-			 * dereference operator
-			 * @return a reference to the value in the Const_Iterator's current state
-			 */
-			reference operator * () const 
-			{
-				assert(_index <= _p->size());
-				return _p->operator[](_index);
-			}
-
-			// -----------
-			// operator ->
-			// -----------
-
-			/**
-			 * pointer member access operator
-			 * @return a pointer to the value in the Const_Iterator's current state
-			 */
-			pointer operator -> () const 
-			{
-				return &**this;
-			}
-
-			// -----------
-			// operator ++
-			// -----------
-
-			/**
-			 * Pre-increment Operator
-			 * @return a Const_Iterator reference incremented by 1
-			 */
-			const_iterator& operator ++ () 
-			{
-				++_index;
-				assert(valid());
-				return *this;
-			}
-
-			/**
-			 * Post-Increment Operator
-			 * Does not effect the Const_Iterator argument
-			 * @return an Const_Iterator incremented by 1
-			 */
-			const_iterator operator ++ (int) 
-			{
-				const_iterator x = *this;
-				++(*this);
-				assert(valid());
-				return x;
-			}
-
-			// -----------
-			// operator --
-			// -----------
-
-			/**
-			 * Pre-decrement Operator
-			 * @return a Const_Iterator reference decremented by 1
-			 */
-			const_iterator& operator -- () 
-			{
-				--_index;
-				assert(valid());
-				return *this;
-			}
-
-			/**
-			 * Post-Decrement Operator
-			 * Does not effect the Const_Iterator argument
-			 * @return an Const_Iterator decremented by 1
-			 */
-			const_iterator operator -- (int) 
-			{
-				const_iterator x = *this;
-				--(*this);
-				assert(valid());
-				return x;
-			}
-
-			// -----------
-			// operator +=
-			// -----------
-
-			/**
-			 * Addition Assignent Operator
-			 * @param d - the right hand side difference_type
-			 * @return a Const_Iterator reference shifted forward by the difference_type value
-			 */
-			const_iterator& operator += (difference_type d) 
-			{
-				_index += d;
-				assert(valid());
-				return *this;
-			}
-
-			// -----------
-			// operator -=
-			// -----------
-
-			/**
-			 * Subtraction Assignent Operator
-			 * @param d - the right hand side difference_type
-			 * @return a Const_Iterator reference shifted backward by the difference_type value
-			 */
-			const_iterator& operator -= (difference_type d) 
-			{
-				_index -= d;
-				assert(valid());
-				return *this;
+				return const_iterator(_p, _index);
 			}
 	};
 

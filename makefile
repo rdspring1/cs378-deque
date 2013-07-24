@@ -5,6 +5,9 @@ clean:
 	rm -f Deque.log
 	rm -f Deque.zip
 	rm -f TestDeque
+	rm -f TestDeque1
+	rm -f TestDeque2
+
 
 doc: Deque.h
 	doxygen Doxyfile
@@ -26,6 +29,12 @@ Deque.zip: Deque.h Deque.log TestDeque.c++ TestDeque.out
 
 TestDeque: Deque.h TestDeque.c++
 	g++ -pedantic -std=c++0x -Wall TestDeque.c++ -o TestDeque -lgtest -lpthread -lgtest_main
+
+TestDeque1: Deque.h tsm544-TestDeque.c++
+	g++ -pedantic -std=c++0x -Wall tsm544-TestDeque.c++ -o TestDeque1 -lgtest -lpthread -lgtest_main
+
+TestDeque2: Deque.h tsm544-TestDeque.c++
+	g++ -pedantic -std=c++0x -Wall davismc-TestDeque.c++ -o TestDeque2 -lgtest -lpthread -lgtest_main
 
 TestDeque.out: TestDeque
 	valgrind ./TestDeque > TestDeque.out

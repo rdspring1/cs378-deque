@@ -625,7 +625,7 @@ TYPED_TEST(DequeTest, SwapLarge) {
 // --- Iterator Interface Tests ---
 // Test the iterators and related methods of both classes
 // Methods that use iterators are also tested here
-// CAUTION: You can't copmare iterators using *_EQ
+// CAUTION: You can't compare iterators using *_EQ
 
 template<typename C>
 class IteratorTest : public testing::Test {
