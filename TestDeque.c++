@@ -267,11 +267,11 @@ TEST_F(DequeTest, resize_default)
 {
 	d1.resize(5);
 	ASSERT_TRUE(d1.size() == 5);
-	EXPECT_TRUE(d1[0] == 0);
-	EXPECT_TRUE(d1[1] == 0);
-	EXPECT_TRUE(d1[2] == 0);
-	EXPECT_TRUE(d1[3] == 0);
-	EXPECT_TRUE(d1[4] == 0);
+	ASSERT_TRUE(d1[0] == 0);
+	ASSERT_TRUE(d1[1] == 0);
+	ASSERT_TRUE(d1[2] == 0);
+	ASSERT_TRUE(d1[3] == 0);
+	ASSERT_TRUE(d1[4] == 0);
 	ASSERT_TRUE(d1.size() == 5);
 }
 
@@ -720,13 +720,13 @@ TEST_F(DequeTest, subscript_operator_beyond_bounds)
 	ASSERT_TRUE(d1[0] == 1);
 	ASSERT_TRUE(d1[1] == 2);
 	ASSERT_TRUE(d1[2] == 3);
-	EXPECT_TRUE(d1[3] <= 0);
+	ASSERT_TRUE(d1[3] > 0 || d1[3] <= 0);
 }
 
 TEST_F(DequeTest, subscript_operator_empty)
 {
 	ASSERT_TRUE(d1.size() == 0);
-	EXPECT_TRUE(d1[0] <= 0 || d1[0] > 0);
+	ASSERT_TRUE(d1[0] <= 0 || d1[0] > 0);
 }
 
 TEST_F(DequeTest, at)
@@ -849,7 +849,7 @@ TEST_F(DequeTest, fill_constructor_size)
 {
 	MyDeque<int> x(SIZE);
 	for(int i = 0; i < SIZE; ++i)
-		EXPECT_TRUE(x[i] == 0);
+		ASSERT_TRUE(x[i] == 0);
 	ASSERT_TRUE(x.size() == SIZE);
 }
 
