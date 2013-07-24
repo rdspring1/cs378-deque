@@ -885,8 +885,8 @@ public:
 		else if (that.size() <= capacity) 
 		{
 			// Less than or equal to capacity
-			std::copy(that.begin(), that.begin() + size(), this->begin());
-			uninitialized_copy(_a, that.begin() + that.size(), that.end(), this->end());
+			std::copy(that.begin(), that.begin() + this->size(), this->begin());
+			uninitialized_copy(_a, that.begin() + this->size(), that.end(), this->end());
 			count = that.size();
 		}
 		else 
