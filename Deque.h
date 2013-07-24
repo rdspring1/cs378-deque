@@ -738,22 +738,30 @@ class MyDeque
             if (this == &that)
                 return *this;
 
-			int capacity = (ce - cb) * SIZE;
+			// capacity = the number of elements from the allocated end to max end
+			int capacity = (ce - pe) * SIZE + (e - *pe);
             if (that.size() == size())
 			{
-                // TODO: Equal Size
+                // Equal Size
+				std::copy(that.begin(), that.end(), begin());
 			}
             else if (that.size() < size()) 
 			{
-                // TODO: Less than Size
+                // Less than Size
+				std::copy(that.begin(), that.end(), begin());
 			}
             else if (that.size() <= capacity) 
 			{
-                // TODO: Less than or equal to capacity
+                // Less than or equal to capacity
+				std::copy(that.begin(), that.begin() + size(), begin());
+                e = uninitialized_copy(_a, that.begin() + size(), that.end(), this->end());
 			}
             else 
 			{
-                // TODO: Greater than capacity
+                // Greater than capacity
+				clear();
+				rebuild(that.size());
+				e = uninitialized_copy(_a, that.begin(), that.end(), this->begin());
 			}
             assert(valid());
             return *this;
