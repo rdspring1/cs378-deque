@@ -173,30 +173,79 @@ class MyDeque
 			return false;
         }
 
+		///
+		/// <your documentation>
+		///
 		void ia_fill (int add, const_reference v)
 		{
+			pointer* x = pb;
 			for(; add > 0; add -= SIZE)
 			{
 				size_type inner_array = (add >= SIZE) ? SIZE : add;
-				*pe = _a.allocate(SIZE);
-				e = uninitialized_fill(_a, *pe, *pe + inner_array, v);
-				++pe;
+				e = uninitialized_fill(_a, *x, *x + inner_array, v);
+				++x;
 			}
 		}
 
+		///
+		/// <your documentation>
+		///
 		template<typename I>
 		void ia_copy (int add, I bIter)
 		{
-			I eIter = b;
+			pointer* x = pb;
+			I eIter = bIter;
 			for(; add > 0; add -= SIZE)
 			{
 				size_type inner_array = (add >= SIZE) ? SIZE : add;
 				eIter += inner_array;
-				*pe = _a.allocate(SIZE);
-				e = uninitialized_copy(_a, bIter, eIter, *pe);
+				e = uninitialized_copy(_a, bIter, eIter, *x);
 				bIter += inner_array;
-				++pe;
+				++x;
 			}
+		}
+		
+		///
+		/// <your documentation>
+		///
+		void allocate(pointer* _b)
+		{
+			while(_b != ce)
+			{
+				*_b = _a.allocate(SIZE);
+				++_b;
+			}
+			b = pb[0];
+			e = pe[0];
+		}
+
+		///
+		/// <your documentation>
+		///
+		void rebuild(size_type s)
+		{
+			MyDeque x(*this, 2 * s);
+            this->swap(x);
+		}
+
+		///
+		/// <your documentation>
+		///
+		MyDeque (const MyDeque& that, size_type s) : _a (that._a) 
+		{
+            assert(s >= that.size());
+            size_type outer_array = (s % SIZE) ? s / SIZE + 1 : s / SIZE;
+			size_type copy_array = (that.size() % SIZE) ? that.size() / SIZE + 1 : that.size() / SIZE;
+			(outer_array % 2) ? outer_array : outer_array += 1;
+			allocator_type::rebind<pointer>::other _astar;
+			cb = _astar.allocate(outer_array);
+			pb = cb + outer_array / 2;
+			pe = pb + copy_array;
+			ce = cb + outer_array;
+			allocate(cb);
+			ia_copy(that.size(), that.begin());
+			count = that.size();
+            assert(valid());
 		}
 
     public:
@@ -630,10 +679,11 @@ class MyDeque
         {
             size_type outer_array = (s % SIZE) ? s / SIZE + 1 : s / SIZE;
 			allocator_type::rebind<pointer>::other _astar;
-			pe = pb = cb = _astar.allocate(outer_array);
+			pb = cb = _astar.allocate(outer_array);
+			pe = pb + outer_array;
 			ce = cb + outer_array;
+			allocate(cb);
 			ia_fill(s, v);
-			b = pb[0];
 			count = s;
             assert(valid());
         }
@@ -646,10 +696,11 @@ class MyDeque
 			count = that.size();
             size_type outer_array = (that.size() % SIZE) ? that.size() / SIZE + 1 : that.size() / SIZE;
 			allocator_type::rebind<pointer>::other _astar;
-			pe = pb = cb = _astar.allocate(outer_array);
+			pb = cb = _astar.allocate(outer_array);
+			pe = pb + outer_array;
 			ce = cb + outer_array;
+			allocate(cb);
 			ia_copy(that.size(), that.begin());
-			b = pb[0];
             assert(valid());
         }
 
@@ -665,12 +716,12 @@ class MyDeque
             if(cb)
 			{
 				clear();
-				while(b != e)
+				pointer* x = cb;
+				while(x != ce)
 				{
-					_a.deallocate(b, SIZE);
-					++b;
+					_a.deallocate(*x, SIZE);
+					++x;
 				}
-				_a.deallocate(b, SIZE);
 				allocator_type::rebind<pointer>::other _astar;
 				_astar.deallocate(cb, ce - cb);
 			}
@@ -684,11 +735,12 @@ class MyDeque
         /**
          * <your documentation>
          */
-        MyDeque& operator = (const MyDeque& rhs) 
+        MyDeque& operator = (const MyDeque& that) 
         {
             if (this == &that)
                 return *this;
 
+			int capacity = (ce - cb) * SIZE;
             if (that.size() == size())
 			{
                 // TODO: Equal Size
@@ -697,7 +749,7 @@ class MyDeque
 			{
                 // TODO: Less than Size
 			}
-            else if (that.size() <= capacity()) 
+            else if (that.size() <= capacity) 
 			{
                 // TODO: Less than or equal to capacity
 			}
@@ -718,7 +770,7 @@ class MyDeque
          */
         reference operator [] (size_type index) 
         {
-			size_type offsetBOA = cb - pb;
+			size_type offsetBOA = pb - cb;
             size_type offsetBIA = b - *pb;
 			size_type outer_array_index = (index + offsetBIA) / SIZE + offsetBOA;
 			size_type inner_array_index = (index + offsetBIA) % SIZE;
@@ -950,10 +1002,11 @@ class MyDeque
 			}
             if (s < this->size())
 			{
-				size_type offsetBOA = cb - pb;
+				size_type index = (s == 0) ? s : s - 1;
+				size_type offsetBOA = pb - cb;
 				size_type offsetBIA = b - *pb;
-				size_type outer_array_index = (s + offsetBIA) / SIZE + offsetBOA;
-				size_type inner_array_index = (s + offsetBIA) % SIZE;
+				size_type outer_array_index = (index + offsetBIA) / SIZE + offsetBOA;
+				size_type inner_array_index = (index + offsetBIA) % SIZE;
 				pe = cb + outer_array_index;
 				e = *pe + inner_array_index;
                 destroy(_a, begin() + s, end());
@@ -962,7 +1015,7 @@ class MyDeque
 			{
 				int add = s - this->size();
 				int ia_remain = SIZE - (e - *pe);
-				if(ia_remain != 0)
+				if(ia_remain != 0 && ia_remain != SIZE)
 				{
 					uninitialized_fill(_a, this->end(), this->end() + ia_remain, v);
 					e += ia_remain;
@@ -974,10 +1027,11 @@ class MyDeque
 					++pe;
 					ia_fill(add, v);
 				}
+				count = s;
 			}
             else 
 			{
-                // TODO: Rebuild Function
+				rebuild(s);
                 resize(s, v);
 			}
             assert(valid());
@@ -1002,9 +1056,23 @@ class MyDeque
         /**
          * <your documentation>
          */
-        void swap (MyDeque&) 
+        void swap (MyDeque& that) 
         {
-            // <your code>
+            if (_a == that._a) 
+			{
+                std::swap(cb, that.cb);
+                std::swap(ce, that.ce);
+                std::swap(pb, that.pb);
+				std::swap(pe, that.pe);
+				std::swap(b, that.b);
+				std::swap(e, that.e);
+			}
+            else 
+			{
+                MyDeque x(*this);
+                *this = that;
+                that  = x;
+			}
             assert(valid());
         }
     };
