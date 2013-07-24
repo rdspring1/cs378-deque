@@ -200,7 +200,7 @@ class MyDeque
 				{
 					size_type inner_array = (add >= SIZET) ? SIZET : add;
 					eIter += inner_array;
-					e = uninitialized_copy(_a, bIter, eIter, *x);
+					uninitialized_copy(_a, bIter, eIter, *x);
 					bIter += inner_array;
 					++x;
 				}
@@ -216,7 +216,7 @@ class MyDeque
 				*_b = _a.allocate(SIZET);
 				++_b;
 			}
-			b = pb[0] + SIZET - 1;
+			b = pb[0];
 			e = pe[0];
 		}
 
@@ -235,14 +235,18 @@ class MyDeque
 		MyDeque (const MyDeque& that, size_type s) : _a (that._a) 
 	{
 		assert(s >= that.size());
-		size_type outer_array = (s % SIZET) ? s / SIZET + 1 : s / SIZET;
+		// # of outer arrays used to store old data
 		size_type copy_array = (that.size() % SIZET) ? that.size() / SIZET + 1 : that.size() / SIZET;
-		(outer_array % 2) ? outer_array : outer_array += 1;
+		// # of outer arrays for the rebuilt MyDeque
+		size_type outer_array = (s % SIZET) ? s / SIZET + 1 : s / SIZET;
+		((outer_array *= 2) % 2) ? outer_array : outer_array += 1;
+		// Allocate Memory
 		cb = _astar.allocate(outer_array);
 		pb = cb + outer_array / 2;
 		pe = pb + copy_array;
 		ce = cb + outer_array;
 		allocate(cb);
+		// Copy old data
 		ia_copy(that.size(), that.begin(), pb);
 		count = that.size();
 		assert(valid());
@@ -738,7 +742,7 @@ class MyDeque
 				return *this;
 
 			// capacity = the number of elements from the allocated end to max end
-			size_type capacity = (ce - pe) * SIZET + (e - *pe);
+			size_type capacity = (cb == nullptr) ? 0 : (ce - pb) * SIZET;
 			if (that.size() == this->size())
 			{
 				// Equal Size
@@ -787,6 +791,9 @@ class MyDeque
 		 */
 		reference operator [] (size_type index) 
 		{
+			static value_type dummy;
+			if(cb == nullptr)
+				return dummy;
 			size_type offsetBOA = pb - cb;
 			size_type offsetBIA = b - *pb;
 			size_type outer_array_index = (index + offsetBIA) / SIZET + offsetBOA;
@@ -966,7 +973,7 @@ class MyDeque
 		iterator insert (iterator iter, const_reference v) 
 		{
 			// capacity = the number of elements from the allocated end to max end
-			int capacity = (ce - pe) * SIZET + (e - *pe);
+			size_type capacity = (cb == nullptr) ? 0 : (ce - pb) * SIZET;
 			if(capacity < 1)
 				rebuild(this->size() + 1);
 			++count;
@@ -1035,10 +1042,10 @@ class MyDeque
 			if(cb == nullptr || *cb == b)
 				rebuild(this->size() + 1);
 
-			int ia_remain = SIZET - (b - *pb);
+			int ia_remain = b - *pb;
 			if(ia_remain == 0)
 			{
-				++pb;
+				--pb;
 				b = *pb + SIZET - 1;
 			}
 			else
@@ -1059,7 +1066,7 @@ class MyDeque
 		 */
 		void resize (size_type s, const_reference v = value_type()) 
 		{
-			size_type capacity = (ce - cb) * SIZET;
+			size_type capacity = (cb == nullptr) ? 0 : (ce - pb) * SIZET;
 			if (s == this->size())
 			{
 				return;
