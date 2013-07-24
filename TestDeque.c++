@@ -417,12 +417,12 @@ TEST_F(DequeTest, pop_front_random)
 	for(int i = 0; i < SIZE; ++i)
 		d1.push_back(i);
 
+    ASSERT_TRUE(d1.size() == SIZE);
 	for(int i = 0; i < SIZE; ++i)
 	{
 		ASSERT_TRUE(d1.front() == i);
 		d1.pop_front();
 	}
-
 	ASSERT_TRUE(d1.size() == 0);
 }
 
@@ -523,6 +523,7 @@ TEST_F(DequeTest, insert_random)
 	auto iter_d1 = d1.begin();
 	++iter_d1;
 	iter_d1 = d1.insert(iter_d1, 20);
+    iter_d1 = d1.insert(iter_d1, 20);
 	ASSERT_TRUE(d1[0] == 4);
 	ASSERT_TRUE(d1[1] == 20);
 	ASSERT_TRUE(d1[2] == 20);

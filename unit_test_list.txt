@@ -56,7 +56,7 @@ valid
 destructor
 valid
 
-Project 4: Deque
+Project 4: Deque 7/23/2013
 + Implemented Destructor; Parts of Resize
 + Completed Resize; Implemented Rebuild function
 + Implement Push_Back and Pop_Back function; Fixed Resize Function - Capacity
@@ -72,4 +72,10 @@ Project 4: Deque
 [  FAILED  ] DequeTest.copy_assignement_operator_multiple
 [  FAILED  ] DequeSingleTest.push_pop_back_copy_assignment
 [  FAILED  ] DequeSingleTest.push_back_swap
+
+Project 4: Deque 7/24/2013
++ Add Documentation
++ Fix Pop_Front Function
++ Fix Copy Assignment Operator - that.size() > this->size()
++ Fix Swap Function
 
