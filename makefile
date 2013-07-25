@@ -7,7 +7,7 @@ clean:
 	rm -f TestDeque
 	rm -f TestDeque1
 	rm -f TestDeque2
-
+	rm -f TestDeque3
 
 doc: Deque.h
 	doxygen Doxyfile
@@ -35,6 +35,9 @@ TestDeque1: Deque.h tsm544-TestDeque.c++
 
 TestDeque2: Deque.h tsm544-TestDeque.c++
 	g++ -pedantic -std=c++0x -Wall davismc-TestDeque.c++ -o TestDeque2 -lgtest -lpthread -lgtest_main
+    
+TestDeque3: Deque.h aashishs-TestDeque.c++
+	g++ -pedantic -std=c++0x -Wall aashishs-TestDeque.c++ -o TestDeque3 -lgtest -lpthread -lgtest_main
 
 TestDeque.out: TestDeque
 	valgrind ./TestDeque > TestDeque.out
