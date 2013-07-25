@@ -1,0 +1,251 @@
+commit d9d76df81b497d6e91ad1dab0deda7c042e547a1
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Thu Jul 25 06:07:34 2013 -0500
+
+    Added more Unit Tests; Increased Size of Inner Array of MyDeque
+
+commit be4e5bb0278eb0813c8749426f320e08a707d057
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Thu Jul 25 05:54:15 2013 -0500
+
+    Added Private Unit Tests
+
+commit 0f3ec59a678e24faf9a133100dbc6f0204e53206
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Thu Jul 25 03:20:24 2013 -0500
+
+    Added more Unit Tests to Suite 1
+
+commit b20134685a3955a57d5ffbd36d0e08f20b6fdd22
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 23:35:28 2013 -0500
+
+    Pass Unit Test Suites 1, 2, 3
+
+commit c63db4237e8d3904c2095d0c4110e77e27bff0d3
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 21:38:16 2013 -0500
+
+    Pass Unit Test Suite 1 and 2
+
+commit 8bafcbc22584f7f18824d006a6d4f5a2a0b53d1f
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 21:23:25 2013 -0500
+
+    Visual Studio Passing Version
+
+commit c9c45649c7401368b16ffe6c7363e203d6b812cc
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 21:18:25 2013 -0500
+
+    Failing Push_Back_Random
+
+commit f8136dc9c4aa6cc4dcd3183a5d0f11beb8b717d4
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 19:16:00 2013 -0500
+
+    Fixed Push_Back_Random Unit Test
+
+commit 703c72992abdb69f867697b72e2ab1f32e7e4ed9
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 19:08:57 2013 -0500
+
+    Errors Push_Back_Random
+
+commit 3e269208cc58b4cec853fe94b21b72bac4dcfc9e
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 17:59:31 2013 -0500
+
+    Added type conversion from iterator to const_iterator
+
+commit 7248728e30a3522ecabfeb9a9eb68cd553b5f200
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 17:30:13 2013 -0500
+
+    Add supplemental unit tests
+
+commit 727ce5b11bdb6c58113b35bf44bcdc83d66ff335
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 17:24:58 2013 -0500
+
+    Fix documentation bugs
+
+commit 6c895583e7a0015165b061fcd740faa92f7190a1
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 17:13:41 2013 -0500
+
+    Modified Private MyDeque Constructor to swap array values
+
+commit 177eaa35e5305770c55d48da5e880b7dd4e15f0f
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 16:03:27 2013 -0500
+
+    Pass all Unit Tests
+
+commit 96085cf799f7244e9baca8e7c81d1b100eead02e
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 15:49:50 2013 -0500
+
+    Fixed Swap Function
+
+commit 4ce10aef29def802a34cf6db301dcde516f3f9f9
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 15:48:44 2013 -0500
+
+    Fixed Copy Assignment Operator - that.size > this->size
+
+commit b156ada1a54f7e7796761155ef34bfaa241710ef
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 15:47:51 2013 -0500
+
+    Fixed Pop_Front Function
+
+commit cf6a7dd498e7b6ce6c2ba565b8799ac90fb3e0b8
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 24 15:18:46 2013 -0500
+
+    Add Documentation
+
+commit b14fe87fe74d5905adbcf317e8340dd4d97cbfeb
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Wed Jul 24 01:48:46 2013 -0500
+
+    Updated Project Notes
+
+commit 4f3133ef42b6ad573860114101cfda4900b89efb
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Wed Jul 24 01:46:44 2013 -0500
+
+    Completed Unit Test w/o Fatal Error - Fail 5 Unit Tests
+
+commit 2b9a4db3a76846bc7aa53a14774c8a5542591b1e
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Wed Jul 24 01:35:07 2013 -0500
+
+    Fixed Unit Test Bugs
+
+commit 7dd0ef1b902e746fdc078a16562fd924ee73bc35
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 22:15:23 2013 -0500
+
+    Updated std::deque test suite
+
+commit b89ede4acdfd087ebfd8cc31ce047013c0c2e042
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Tue Jul 23 22:13:09 2013 -0500
+
+    Fixed Unit Test - MyDeque Compatibility
+
+commit 7cb3c60e8e2e922bf1f99987f257b29d79650f6a
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:30:49 2013 -0500
+
+    Setup Unit Tests for MyDeque
+
+commit 7f1dd35659a4b3ea476c142258722f1191f29e94
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:25:09 2013 -0500
+
+    Fixed Insert and Erase Functions
+
+commit 509a6cf27a9b9f3ec2d8edde5258ac882dda4efa
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:24:17 2013 -0500
+
+    Implemented Insert and Erase Functions
+
+commit 259686a019296ed58c5512cb64372bb7a24611e5
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:23:31 2013 -0500
+
+    Implemented the Copy Assignment Operator
+
+commit bcd95972070139b04d3d54e137681f5bef49340d
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:22:12 2013 -0500
+
+    Implemented Push_Front and Pop Front Function; Resize Function - Size
+
+commit 627a77d494ead556abae4b1d2c152b96d1818a29
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:19:17 2013 -0500
+
+    Implemented Push_Back and Pop_Back function; Resize Function - Capacity
+
+commit 6d4f3b434f18fe78ddbed2bb08b6168299e36244
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:18:38 2013 -0500
+
+    Complete Resize; Implemented Rebuild Function
+
+commit b26df68ac993303f30fec6a27c744860d68b2730
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 21:17:22 2013 -0500
+
+    Implemented Destructor; Parts of Resize
+
+commit d774afc4e143cb454eb917d05c6f5975922b4b2a
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 06:20:40 2013 -0500
+
+    Fix Copy Constructor and Iterators
+
+commit a73f45ce09c1f851f95998338f7b5b63a03939c5
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 05:45:29 2013 -0500
+
+    Implement Iterators
+
+commit dc0786676c04780918f3a3c958dee9d36749944f
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 04:47:52 2013 -0500
+
+    Implement Constructors
+
+commit c80845c3b6f42b1e6fbf82163c89c457c3b21ea1
+Author: rdspring <rdspring1@gmail.com>
+Date:   Tue Jul 23 02:39:31 2013 -0500
+
+    Added Additional Unit Tests
+
+commit c7915a7fe213231654167ee5ae99ece0688c2d66
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Fri Jul 19 03:15:48 2013 -0500
+
+    Complete Unit Test Suite - std::deque
+
+commit 066aa7fdb2b9d2516662b26090e52218a8c5f28c
+Merge: 9e630a3 4678d7d
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Fri Jul 19 00:46:28 2013 -0500
+
+    Merge branch 'master' of github.com:rdspring1/cs378-deque
+    
+    Conflicts:
+    	Allocator.h
+    	TestDeque.c++
+    	unit_test_list.txt
+
+commit 9e630a369d0474b29116038c4323dcf6fb1d5be4
+Author: RyanDS <rdspring1@gmail.com>
+Date:   Fri Jul 19 00:30:04 2013 -0500
+
+    Updated Unit Tests
+
+commit 4678d7dec1bcd284072e2514f632909d4671356b
+Author: rdspring <rdspring1@gmail.com>
+Date:   Wed Jul 17 16:34:00 2013 -0500
+
+    Added Unit Tests
+
+commit 435194c3a6565f5a1a5c9fa63aa68a2061be4b90
+Author: rdspring <rdspring1@gmail.com>
+Date:   Mon Jul 15 17:48:57 2013 -0500
+
+    Setup Google Test Unit Tests
+
+commit 5f84891378262d5e1b8c6426c525501d83586aa0
+Author: rdspring <rdspring1@gmail.com>
+Date:   Sat Jul 13 15:45:12 2013 -0500
+
+    Initial Commit - Skeleton
