@@ -1250,7 +1250,7 @@ public:
 	 */
 	void resize (size_type s, const_reference v = value_type()) 
 	{
-		int add = s - this->size();
+		size_type add = s - this->size();
 		size_type capacity = (cb == nullptr) ? 0 : (ce - pe) * SIZET;
 		if (s == this->size())
 		{
@@ -1268,9 +1268,9 @@ public:
 			destroy(_a, this->begin() + s, this->end());
 			count = s;
 		}
-		else if (s <= capacity)
+		else if (add <= capacity)
 		{
-			int ia_remain = SIZET - (e - *pe);
+			size_type ia_remain = SIZET - (e - *pe);
 			if(ia_remain != 0)
 			{
 				int fillsize = std::min(add, ia_remain);
