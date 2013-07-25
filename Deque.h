@@ -349,7 +349,7 @@ private:
 			}
 			else
 			{
-				ia_copy(that.pb, that.pe, this->pb);
+				ia_copy(that.pb, that.pb + copy_array, this->pb);
 				b = *pb + bdiff;
 				e = *pe;
 			}
