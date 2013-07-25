@@ -958,7 +958,6 @@ TYPED_TEST(IteratorTest, EraseLarge) {
 	this->Push();
 	typename TestFixture::difference_type expectedSize = 3 + 2 * this->s;
 	EXPECT_EQ(expectedSize, this->x.size());
-	EXPECT_EQ(0, *(this->i));
 	this->x.erase(this->x.begin() + this->s);
 	EXPECT_EQ(expectedSize - 1, this->x.size());
 }

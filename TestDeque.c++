@@ -4,7 +4,7 @@
 // Glenn P. Downing
 // ----------------------------
 
-#define SIZE 101
+#define SIZE 500
 
 /*
    To test the program:
