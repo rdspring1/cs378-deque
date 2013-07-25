@@ -6,6 +6,7 @@
 
 #define private public
 #define protected public
+
 #define SIZE 500
 #define ITERATION 1000
 
@@ -43,6 +44,7 @@
 #include <string>    // ==
 #include <algorithm>
 #include <iostream>
+#include <stddef.h>
 
 #include "gtest/gtest.h"
 
@@ -1814,7 +1816,6 @@ TEST(DequeAcceptanceTest, insert_end)
 
 TEST(DequePrivate, ia_fill)
 {
-	const int SIZET = 10;
 	MyDeque<int> x;
 	std::allocator<int*> A;
 	int** outer_array = A.allocate(1);
@@ -1837,16 +1838,15 @@ TEST(DequePrivate, ia_fill)
 
 TEST(DequePrivate, ia_fill_large)
 {
-	const int SIZET = 10;
 	MyDeque<int> x;
 	std::allocator<int*> A;
-	int** outer_array = A.allocate(100 / SIZET);
-	int** end = outer_array + (100 / SIZET);
+	int** outer_array = A.allocate(10);
+	int** end = outer_array + 10;
 
 	for(int** n = outer_array; n != end; ++n)
 		*n = x._a.allocate(SIZET);
 
-	x.ia_fill(100, 5, outer_array); 
+	x.ia_fill(10000, 5, outer_array); 
 	while(outer_array != end)
 	{
 		int* ia_b = *outer_array;
@@ -1877,5 +1877,9 @@ TEST(DequePrivate, set_deque_ptr)
 
 TEST(DequePrivate, rebuild)
 {
-	ASSERT_TRUE(true);
+	MyDeque<int> x(1);
+	size_t capacity = x.ce - x.cb;
+	x.rebuild(capacity * SIZET + 1);
+	size_t new_capacity = x.ce - x.cb;
+	ASSERT_TRUE(new_capacity > 2 * capacity);
 }

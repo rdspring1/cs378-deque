@@ -8,8 +8,8 @@
 #define Deque_h
 
 // Global Constant
-const ptrdiff_t SIZET = 10;
-const size_t USIZET = 10;
+const ptrdiff_t SIZET = 1000;
+const size_t USIZET = 1000;
 
 // --------
 // includes
