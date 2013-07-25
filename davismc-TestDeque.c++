@@ -1676,8 +1676,8 @@ TEST(Acceptance, removals_3){
 		y.push_back(rand_value);}
 	
 	while (x.empty() == y.empty() && !y.empty()){
-		x.erase(x.end());
-		y.erase(y.end());
+		x.erase(x.end() - 1);
+		y.erase(y.end() - 1);
 		if (!y.empty()){
 			ASSERT_TRUE(*x.begin() == *y.begin());
 			ASSERT_TRUE(*(x.end() - 1)  == *(y.end() - 1));
@@ -1724,8 +1724,8 @@ TEST(Acceptance, removals_5){
 		y.push_back(rand_value);}
 
 	while (x.empty() == y.empty() && !y.empty()){
-		x.erase(x.begin() + 1);
-		y.erase(y.begin() + 1);
+		x.erase(x.begin());
+		y.erase(y.begin());
 		if (!y.empty()){
 			ASSERT_TRUE(*x.begin() == *y.begin());
 			ASSERT_TRUE(*(x.end() - 1)  == *(y.end() - 1));

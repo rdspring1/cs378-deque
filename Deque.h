@@ -9,6 +9,7 @@
 
 // Global Constant
 const ptrdiff_t SIZET = 10;
+const size_t USIZET = 10;
 
 // --------
 // includes
@@ -216,7 +217,7 @@ private:
 		if (cb == 0 && ce == 0 && pb == 0 && pe == 0 && b == 0 && e == 0 && count == 0)
 			return true;
 		// Non-Empty Non Circular
-		if(cb <= pb && pb <= pe && pe <= ce && b != 0 && e != 0 && count >= 0)
+		if(cb <= pb && pb <= pe && pe <= ce && count >= 0)
 			return true;
 		return false;
 	}
@@ -322,9 +323,14 @@ private:
 		// Copy old data
 		if(copy_array > 0)
 		{
-			ia_copy(that.pb, that.pe, this->pb);
-			b = pb[0];
-			e = pe[0];
+			ptrdiff_t bdiff = that.b - *that.pb;
+			assert(bdiff <= SIZET);
+			if(that.pb == that.pe)
+				ia_copy(that.pb, that.pe + 1, this->pb);
+			else
+				ia_copy(that.pb, that.pe, this->pb);
+			b = *pb + bdiff;
+			e = *pe;
 		}
 		this->count = that.count;
 		that.count = 0;
@@ -832,15 +838,26 @@ public:
 	* @param v - an optional argument for a value used to initialize the container
 	* @param a - an optional argument for an allocator object
 	*/
-	explicit MyDeque (size_type s, const_reference v = value_type(), const allocator_type& a = allocator_type()) : _a (a)
+	explicit MyDeque (size_type s, const_reference v = value_type(), const allocator_type& a = allocator_type()) : _a (a), count(s)
 	{
-		size_type outer_array = (s % SIZET) ? s / SIZET + 1 : s / SIZET;
-		pb = cb = _astar.allocate(outer_array);
-		pe = pb + outer_array;
-		ce = cb + outer_array;
-		allocate(cb, ce);
-		ia_fill(s, v, pb);
-		count = s;
+		if(s != 0)
+		{
+			size_type outer_array = (s % SIZET) ? s / SIZET + 1 : s / SIZET;
+			pb = cb = _astar.allocate(outer_array);
+			pe = (s < USIZET) ? pb + outer_array - 1 : pb + outer_array;
+			ce = cb + outer_array;
+			allocate(cb, ce);
+			ia_fill(s, v, pb);
+		}
+		else
+		{
+			cb = 0;
+			ce = 0;
+			pb = 0;
+			pe = 0;
+			b = 0;
+			e = 0;
+		}
 		assert(valid());
 	}
 
@@ -851,12 +868,24 @@ public:
 	MyDeque (const MyDeque& that) : _a (that._a)
 	{
 		count = that.size();
-		size_type outer_array = (that.size() % SIZET) ? that.size() / SIZET + 1 : that.size() / SIZET;
-		pb = cb = _astar.allocate(outer_array);
-		pe = pb + outer_array;
-		ce = cb + outer_array;
-		allocate(cb, ce);
-		ia_copy(that.size(), that.begin(), pb);
+		if(count != 0)
+		{
+			size_type outer_array = (that.size() % SIZET) ? that.size() / SIZET + 1 : that.size() / SIZET;
+			pb = cb = _astar.allocate(outer_array);
+			pe = pb + outer_array;
+			ce = cb + outer_array;
+			allocate(cb, ce);
+			ia_copy(that.size(), that.begin(), pb);
+		}
+		else
+		{
+			cb = 0;
+			ce = 0;
+			pb = 0;
+			pe = 0;
+			b = 0;
+			e = 0;
+		}
 		assert(valid());
 	}
 
@@ -1150,10 +1179,19 @@ public:
 	*/
 	iterator insert (iterator iter, const_reference v) 
 	{
-		// capacity = the number of elements from the allocated end to max end
-		size_type capacity = (cb == nullptr) ? 0 : (ce - pb) * SIZET;
-		if(capacity < 1)
+		if(cb == nullptr || e == *ce)
 			rebuild(this->size() + 1);
+
+		size_type ia_remain = SIZET - (e - *pe);
+		if(ia_remain == 1)
+		{
+			++pe;
+			e = *pe;
+		}
+		else
+		{
+			++e;
+		}
 		++count;
 		iterator lhs = this->end() - 1;
 		iterator rhs = this->end() - 2;
@@ -1259,13 +1297,18 @@ public:
 		}
 		if (s < this->size())
 		{
-			size_type index = (s == 0) ? s : s - 1;
 			size_type offsetBOA = pb - cb;
 			size_type offsetBIA = b - *pb;
-			size_type outer_array_index = (index + offsetBIA) / SIZET + offsetBOA;
-			size_type inner_array_index = (index + offsetBIA) % SIZET;
+			size_type outer_array_index = (s + offsetBIA) / SIZET + offsetBOA;
+			size_type inner_array_index = (s + offsetBIA) % SIZET;
 			pe = cb + outer_array_index;
 			e = *pe + inner_array_index;
+			size_type ia_remain = SIZET - (e - *pe);
+			if(ia_remain == 0)
+			{
+				++pe;
+				e = *pe;
+			}
 			destroy(_a, this->begin() + s, this->end());
 			count = s;
 		}
