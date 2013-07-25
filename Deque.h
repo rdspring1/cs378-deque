@@ -291,6 +291,19 @@ private:
 	}
 
 	///
+	/// Set the pointers of the MyDeque Container to nullptr
+	///
+	void set_deque_ptr()
+	{
+		cb = nullptr;
+		ce = nullptr;
+		pb = nullptr;
+		pe = nullptr;
+		b = nullptr;
+		e = nullptr;
+	}
+
+	///
 	/// Replicate the MyDeque container and expand the capacity of the container 
 	/// @param s - the minimum capacity of the new MyDeque container
 	///
@@ -326,11 +339,20 @@ private:
 			ptrdiff_t bdiff = that.b - *that.pb;
 			assert(bdiff <= SIZET);
 			if(that.pb == that.pe)
+			{
+				ptrdiff_t ediff = that.e - *that.pe;
+				assert(ediff <= SIZET);
 				ia_copy(that.pb, that.pe + 1, this->pb);
+				b = *pb + bdiff;
+				--pe;
+				e = *pe + ediff;
+			}
 			else
+			{
 				ia_copy(that.pb, that.pe, this->pb);
-			b = *pb + bdiff;
-			e = *pe;
+				b = *pb + bdiff;
+				e = *pe;
+			}
 		}
 		this->count = that.count;
 		that.count = 0;
@@ -822,12 +844,7 @@ public:
 	*/
 	explicit MyDeque (const allocator_type& a = allocator_type()) : _a (a)
 	{
-		cb = 0;
-		ce = 0;
-		pb = 0;
-		pe = 0;
-		b = 0;
-		e = 0;
+		set_deque_ptr();
 		count = 0;
 		assert(valid());
 	}
@@ -851,12 +868,7 @@ public:
 		}
 		else
 		{
-			cb = 0;
-			ce = 0;
-			pb = 0;
-			pe = 0;
-			b = 0;
-			e = 0;
+			set_deque_ptr();
 		}
 		assert(valid());
 	}
@@ -879,12 +891,7 @@ public:
 		}
 		else
 		{
-			cb = 0;
-			ce = 0;
-			pb = 0;
-			pe = 0;
-			b = 0;
-			e = 0;
+			set_deque_ptr();
 		}
 		assert(valid());
 	}

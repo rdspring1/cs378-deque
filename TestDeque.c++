@@ -4,7 +4,10 @@
 // Glenn P. Downing
 // ----------------------------
 
+#define private public
+#define protected public
 #define SIZE 500
+#define ITERATION 10000
 
 /*
    To test the program:
@@ -82,12 +85,16 @@ class DequeSingleTest : public testing::Test
 		int v1;
 		int v2;
 		int v3;
+		size_t mediumSize;
+		size_t largeSize;
 
 		virtual void SetUp() 
 		{
 			v1 = 1;
 			v2 = 2;
 			v3 = 3;
+			mediumSize = 15;
+			largeSize = 100;
 		}
 };
 
@@ -1487,4 +1494,194 @@ TEST_F(DequeSingleTest, push_back_rel_ops)
 	ASSERT_TRUE(!(x != y));
 	ASSERT_TRUE(!(x <  y));
 	ASSERT_TRUE(!(x >  y));
+}
+
+TEST_F(DequeSingleTest, copy_assignment_same_object)
+{
+	MyDeque<int> x;
+	x.push_back(v1);
+	x.push_back(v2);
+	x.push_back(v3);
+	ASSERT_EQ(x.size(), 3);
+	x = x;
+	ASSERT_EQ(x.size(), 3);
+}
+
+TEST_F(DequeSingleTest, copy_assignment_equal_size)
+{
+	MyDeque<int> x;
+	x.push_back(v1);
+	x.push_back(v2);
+	x.push_back(v3);
+	MyDeque<int> y;
+	y.push_back(v1);
+	y.push_back(v2);
+	y.push_back(v3);
+	ASSERT_EQ(x.size(), y.size());
+	x = y;
+	ASSERT_TRUE(x == y);
+}
+
+TEST_F(DequeSingleTest, copy_assignment_less_size)
+{
+	MyDeque<int> x;
+	MyDeque<int> y;
+	y.push_back(v1);
+	y.push_back(v2);
+	y.push_back(v3);
+	ASSERT_TRUE(x.size() < y.size());
+	x = y;
+	ASSERT_TRUE(x == y);
+	ASSERT_EQ(x.size(), 3);
+	ASSERT_EQ(y.size(), 3);
+}
+
+TEST_F(DequeSingleTest, copy_assignement_less_capacity)
+{
+	MyDeque<int> x;
+	x.push_back(v1);
+	ASSERT_TRUE(x.size() == 1);
+	MyDeque<int> y(mediumSize, 100);
+	x = y;
+	ASSERT_TRUE(x.size() == mediumSize);
+	for(auto i : x)
+		ASSERT_EQ(i, 100);
+}
+
+TEST_F(DequeSingleTest, copy_assignment_greater_capacity)
+{
+	MyDeque<int> x;
+	x.push_back(v1);
+	ASSERT_TRUE(x.size() == 1);
+	MyDeque<int> y(largeSize, 100);
+	x = y;
+	ASSERT_TRUE(x.size() == largeSize);
+	for(auto i : x)
+		ASSERT_EQ(i, 100);
+}
+
+TEST_F(DequeSingleTest, copy_assignment_empty)
+{
+	MyDeque<int> x(largeSize, 100);
+	ASSERT_TRUE(x.size() == largeSize);
+	for(auto i : x)
+		ASSERT_EQ(i, 100);
+	MyDeque<int> y;
+	ASSERT_TRUE(y.size() == 0);
+	x = y;
+	ASSERT_TRUE(x.size() == 0);
+}
+
+TEST_F(DequeSingleTest, copy_constructor_empty)
+{
+	MyDeque<int> x;
+	ASSERT_TRUE(x.size() == 0);
+	MyDeque<int> y(x);
+	ASSERT_TRUE(y.size() == 0);
+	ASSERT_TRUE(x.size() == 0);
+	
+}
+
+TEST_F(DequeSingleTest, fill_constructor_empty)
+{
+	MyDeque<int> x(0);
+	ASSERT_TRUE(x.size() == 0);
+}
+
+TEST_F(DequeSingleTest, resize_empty)
+{
+	MyDeque<int> x(0);
+	ASSERT_TRUE(x.size() == 0);
+	x.resize(largeSize, 100);
+	ASSERT_TRUE(x.size() == largeSize);
+	for(auto i : x)
+		ASSERT_EQ(i, 100);
+}
+
+TEST_F(DequeSingleTest, resize_equal)
+{
+	MyDeque<int> x(10, 10);
+	ASSERT_TRUE(x.size() == 10);
+	x.resize(10, 42);
+	ASSERT_TRUE(x.size() == 10);
+	for(auto i : x)
+		ASSERT_EQ(i, 10);
+	
+}
+
+TEST_F(DequeSingleTest, resize_less_size)
+{
+	MyDeque<int> x(10, 10);
+	ASSERT_TRUE(x.size() == 10);
+	x.resize(0, 42);
+	ASSERT_TRUE(x.size() == 0);
+}
+
+TEST_F(DequeSingleTest, resize_less_capacity)
+{
+	MyDeque<int> x;
+	x.push_back(v1);
+	ASSERT_TRUE(x.size() == 1);
+	x.resize(mediumSize, 42);
+	ASSERT_TRUE(x.size() == mediumSize);
+	ASSERT_EQ(x.front(), v1);
+	for(size_t i = 1; i < mediumSize; ++i)
+		ASSERT_TRUE(x[i] == 42);
+}
+
+TEST_F(DequeSingleTest, resize_greater_capacity)
+{
+	MyDeque<int> x;
+	x.push_back(v1);
+	ASSERT_TRUE(x.size() == 1);
+	x.resize(largeSize, 42);
+	ASSERT_TRUE(x.size() == largeSize);
+	ASSERT_EQ(x.front(), v1);
+	for(size_t i = 1; i < largeSize; ++i)
+		ASSERT_TRUE(x[i] == 42);
+}
+
+TEST(DequeAcceptance, push_front)
+{
+	ASSERT_TRUE(true);
+}
+
+TEST(DequeAcceptance, push_back)
+{
+	ASSERT_TRUE(true);
+}
+
+TEST(DequeAcceptance, push_back_front_combo)
+{
+	ASSERT_TRUE(true);
+}
+
+TEST(DequeAcceptance, pop_back)
+{
+	ASSERT_TRUE(true);
+}
+
+TEST(DequeAcceptance, pop_front)
+{
+	ASSERT_TRUE(true);
+}
+
+TEST(DequeAcceptance, erase)
+{
+	ASSERT_TRUE(true);
+}
+
+TEST(DequeAcceptance, insert)
+{
+	ASSERT_TRUE(true);
+} 
+
+TEST(DequeAcceptance, insert_begin)
+{
+	ASSERT_TRUE(true);
+}
+
+TEST(DequeAcceptance, insert_end)
+{
+	ASSERT_TRUE(true);
 }

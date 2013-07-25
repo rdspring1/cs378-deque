@@ -1,196 +1,262 @@
 Running main() from gtest_main.cc
-[==========] Running 92 tests from 2 test cases.
+[==========] Running 122 tests from 4 test cases.
 [----------] Global test environment set-up.
 [----------] 58 tests from DequeTest
 [ RUN      ] DequeTest.equal_empty
-[       OK ] DequeTest.equal_empty (43 ms)
+[       OK ] DequeTest.equal_empty (33 ms)
 [ RUN      ] DequeTest.equal_add
-[       OK ] DequeTest.equal_add (7 ms)
+[       OK ] DequeTest.equal_add (29 ms)
 [ RUN      ] DequeTest.equal_misorder
-[       OK ] DequeTest.equal_misorder (8 ms)
+[       OK ] DequeTest.equal_misorder (5 ms)
 [ RUN      ] DequeTest.less_than_empty
-[       OK ] DequeTest.less_than_empty (21 ms)
+[       OK ] DequeTest.less_than_empty (9 ms)
 [ RUN      ] DequeTest.less_than_true
-[       OK ] DequeTest.less_than_true (5 ms)
+[       OK ] DequeTest.less_than_true (6 ms)
 [ RUN      ] DequeTest.less_than_false
-[       OK ] DequeTest.less_than_false (9 ms)
+[       OK ] DequeTest.less_than_false (5 ms)
 [ RUN      ] DequeTest.less_than_equal
-[       OK ] DequeTest.less_than_equal (4 ms)
+[       OK ] DequeTest.less_than_equal (5 ms)
 [ RUN      ] DequeTest.swap
-[       OK ] DequeTest.swap (12 ms)
+[       OK ] DequeTest.swap (5 ms)
 [ RUN      ] DequeTest.swap_empty
-[       OK ] DequeTest.swap_empty (9 ms)
+[       OK ] DequeTest.swap_empty (8 ms)
 [ RUN      ] DequeTest.swap_misorder
-[       OK ] DequeTest.swap_misorder (19 ms)
+[       OK ] DequeTest.swap_misorder (15 ms)
 [ RUN      ] DequeTest.size
 [       OK ] DequeTest.size (5 ms)
 [ RUN      ] DequeTest.size_empty
-[       OK ] DequeTest.size_empty (6 ms)
+[       OK ] DequeTest.size_empty (5 ms)
 [ RUN      ] DequeTest.size_random
-[       OK ] DequeTest.size_random (27 ms)
+[       OK ] DequeTest.size_random (28 ms)
 [ RUN      ] DequeTest.resize_default
-[       OK ] DequeTest.resize_default (21 ms)
+[       OK ] DequeTest.resize_default (10 ms)
 [ RUN      ] DequeTest.resize_shrink
-[       OK ] DequeTest.resize_shrink (14 ms)
+[       OK ] DequeTest.resize_shrink (11 ms)
 [ RUN      ] DequeTest.resize_grow_value
-[       OK ] DequeTest.resize_grow_value (23 ms)
+[       OK ] DequeTest.resize_grow_value (12 ms)
 [ RUN      ] DequeTest.push_front
-[       OK ] DequeTest.push_front (11 ms)
+[       OK ] DequeTest.push_front (8 ms)
 [ RUN      ] DequeTest.push_front_multiple
-[       OK ] DequeTest.push_front_multiple (12 ms)
+[       OK ] DequeTest.push_front_multiple (11 ms)
 [ RUN      ] DequeTest.push_front_random
-[       OK ] DequeTest.push_front_random (8 ms)
+[       OK ] DequeTest.push_front_random (11 ms)
 [ RUN      ] DequeTest.push_back
-[       OK ] DequeTest.push_back (6 ms)
+[       OK ] DequeTest.push_back (5 ms)
 [ RUN      ] DequeTest.push_back_multiple
-[       OK ] DequeTest.push_back_multiple (13 ms)
+[       OK ] DequeTest.push_back_multiple (10 ms)
 [ RUN      ] DequeTest.push_back_random
-[       OK ] DequeTest.push_back_random (7 ms)
+[       OK ] DequeTest.push_back_random (16 ms)
 [ RUN      ] DequeTest.pop_front
-[       OK ] DequeTest.pop_front (5 ms)
+[       OK ] DequeTest.pop_front (21 ms)
 [ RUN      ] DequeTest.pop_front_multiple
-[       OK ] DequeTest.pop_front_multiple (14 ms)
+[       OK ] DequeTest.pop_front_multiple (19 ms)
 [ RUN      ] DequeTest.pop_front_random
-[       OK ] DequeTest.pop_front_random (12 ms)
+[       OK ] DequeTest.pop_front_random (28 ms)
 [ RUN      ] DequeTest.pop_back
-[       OK ] DequeTest.pop_back (7 ms)
+[       OK ] DequeTest.pop_back (12 ms)
 [ RUN      ] DequeTest.pop_back_multiple
-[       OK ] DequeTest.pop_back_multiple (11 ms)
+[       OK ] DequeTest.pop_back_multiple (21 ms)
 [ RUN      ] DequeTest.pop_back_random
-[       OK ] DequeTest.pop_back_random (6 ms)
+[       OK ] DequeTest.pop_back_random (16 ms)
 [ RUN      ] DequeTest.insert
-[       OK ] DequeTest.insert (11 ms)
+[       OK ] DequeTest.insert (12 ms)
 [ RUN      ] DequeTest.insert_multiple
 [       OK ] DequeTest.insert_multiple (29 ms)
 [ RUN      ] DequeTest.insert_random
-[       OK ] DequeTest.insert_random (64 ms)
+[       OK ] DequeTest.insert_random (81 ms)
 [ RUN      ] DequeTest.front
-[       OK ] DequeTest.front (5 ms)
+[       OK ] DequeTest.front (13 ms)
 [ RUN      ] DequeTest.front_multiple
-[       OK ] DequeTest.front_multiple (5 ms)
+[       OK ] DequeTest.front_multiple (7 ms)
 [ RUN      ] DequeTest.front_random
-[       OK ] DequeTest.front_random (8 ms)
+[       OK ] DequeTest.front_random (22 ms)
 [ RUN      ] DequeTest.erase
-[       OK ] DequeTest.erase (12 ms)
+[       OK ] DequeTest.erase (8 ms)
 [ RUN      ] DequeTest.erase_multiple
-[       OK ] DequeTest.erase_multiple (18 ms)
+[       OK ] DequeTest.erase_multiple (24 ms)
 [ RUN      ] DequeTest.erase_random
-[       OK ] DequeTest.erase_random (17 ms)
+[       OK ] DequeTest.erase_random (27 ms)
 [ RUN      ] DequeTest.back
-[       OK ] DequeTest.back (5 ms)
+[       OK ] DequeTest.back (12 ms)
 [ RUN      ] DequeTest.back_multiple
-[       OK ] DequeTest.back_multiple (6 ms)
+[       OK ] DequeTest.back_multiple (12 ms)
 [ RUN      ] DequeTest.back_random
-[       OK ] DequeTest.back_random (9 ms)
+[       OK ] DequeTest.back_random (10 ms)
 [ RUN      ] DequeTest.clear
-[       OK ] DequeTest.clear (11 ms)
+[       OK ] DequeTest.clear (10 ms)
 [ RUN      ] DequeTest.clear_empty
 [       OK ] DequeTest.clear_empty (9 ms)
 [ RUN      ] DequeTest.clear_multiple
-[       OK ] DequeTest.clear_multiple (15 ms)
+[       OK ] DequeTest.clear_multiple (16 ms)
 [ RUN      ] DequeTest.subscript_operator
-[       OK ] DequeTest.subscript_operator (5 ms)
+[       OK ] DequeTest.subscript_operator (7 ms)
 [ RUN      ] DequeTest.subscript_operator_beyond_bounds
-[       OK ] DequeTest.subscript_operator_beyond_bounds (10 ms)
+[       OK ] DequeTest.subscript_operator_beyond_bounds (11 ms)
 [ RUN      ] DequeTest.subscript_operator_empty
-[       OK ] DequeTest.subscript_operator_empty (5 ms)
+[       OK ] DequeTest.subscript_operator_empty (4 ms)
 [ RUN      ] DequeTest.at
-[       OK ] DequeTest.at (13 ms)
+[       OK ] DequeTest.at (7 ms)
 [ RUN      ] DequeTest.at_beyond_bounds
-[       OK ] DequeTest.at_beyond_bounds (88 ms)
+[       OK ] DequeTest.at_beyond_bounds (78 ms)
 [ RUN      ] DequeTest.at_empty
-[       OK ] DequeTest.at_empty (6 ms)
-[ RUN      ] DequeTest.copy_assignement_operator
-[       OK ] DequeTest.copy_assignement_operator (20 ms)
+[       OK ] DequeTest.at_empty (13 ms)
+[ RUN      ] DequeTest.copy_assignment_operator
+[       OK ] DequeTest.copy_assignment_operator (20 ms)
 [ RUN      ] DequeTest.copy_assignement_operator_empty
-[       OK ] DequeTest.copy_assignement_operator_empty (12 ms)
+[       OK ] DequeTest.copy_assignement_operator_empty (10 ms)
 [ RUN      ] DequeTest.copy_assignement_operator_multiple
-[       OK ] DequeTest.copy_assignement_operator_multiple (59 ms)
+[       OK ] DequeTest.copy_assignement_operator_multiple (40 ms)
 [ RUN      ] DequeTest.default_constructor
-[       OK ] DequeTest.default_constructor (8 ms)
+[       OK ] DequeTest.default_constructor (9 ms)
 [ RUN      ] DequeTest.fill_constructor_size
-[       OK ] DequeTest.fill_constructor_size (8 ms)
+[       OK ] DequeTest.fill_constructor_size (11 ms)
 [ RUN      ] DequeTest.fill_constructor_value
-[       OK ] DequeTest.fill_constructor_value (9 ms)
+[       OK ] DequeTest.fill_constructor_value (14 ms)
 [ RUN      ] DequeTest.copy_constructor
-[       OK ] DequeTest.copy_constructor (15 ms)
+[       OK ] DequeTest.copy_constructor (22 ms)
 [ RUN      ] DequeTest.copy_constructor_empty
-[       OK ] DequeTest.copy_constructor_empty (10 ms)
+[       OK ] DequeTest.copy_constructor_empty (11 ms)
 [ RUN      ] DequeTest.copy_constructor_multiple
-[       OK ] DequeTest.copy_constructor_multiple (21 ms)
-[----------] 58 tests from DequeTest (936 ms total)
+[       OK ] DequeTest.copy_constructor_multiple (27 ms)
+[----------] 58 tests from DequeTest (1015 ms total)
 
 [----------] 34 tests from DequeIterTest
 [ RUN      ] DequeIterTest.for_each_read
-[       OK ] DequeIterTest.for_each_read (6 ms)
+[       OK ] DequeIterTest.for_each_read (21 ms)
 [ RUN      ] DequeIterTest.iter_read
-[       OK ] DequeIterTest.iter_read (4 ms)
+[       OK ] DequeIterTest.iter_read (19 ms)
 [ RUN      ] DequeIterTest.iter_update
-[       OK ] DequeIterTest.iter_update (7 ms)
+[       OK ] DequeIterTest.iter_update (21 ms)
 [ RUN      ] DequeIterTest.reverse_iter_read
-[       OK ] DequeIterTest.reverse_iter_read (5 ms)
+[       OK ] DequeIterTest.reverse_iter_read (12 ms)
 [ RUN      ] DequeIterTest.reverse_iter_update
-[       OK ] DequeIterTest.reverse_iter_update (6 ms)
+[       OK ] DequeIterTest.reverse_iter_update (16 ms)
 [ RUN      ] DequeIterTest.const_iter_read
-[       OK ] DequeIterTest.const_iter_read (5 ms)
+[       OK ] DequeIterTest.const_iter_read (17 ms)
 [ RUN      ] DequeIterTest.const_reverse_iter_read
-[       OK ] DequeIterTest.const_reverse_iter_read (5 ms)
+[       OK ] DequeIterTest.const_reverse_iter_read (22 ms)
 [ RUN      ] DequeIterTest.iter_read_plus_equal
-[       OK ] DequeIterTest.iter_read_plus_equal (4 ms)
+[       OK ] DequeIterTest.iter_read_plus_equal (28 ms)
 [ RUN      ] DequeIterTest.iter_update_plus_equal
-[       OK ] DequeIterTest.iter_update_plus_equal (7 ms)
+[       OK ] DequeIterTest.iter_update_plus_equal (17 ms)
 [ RUN      ] DequeIterTest.reverse_iter_read_minus_equal
-[       OK ] DequeIterTest.reverse_iter_read_minus_equal (4 ms)
+[       OK ] DequeIterTest.reverse_iter_read_minus_equal (18 ms)
 [ RUN      ] DequeIterTest.reverse_iter_update_minus_equal
-[       OK ] DequeIterTest.reverse_iter_update_minus_equal (7 ms)
+[       OK ] DequeIterTest.reverse_iter_update_minus_equal (17 ms)
 [ RUN      ] DequeIterTest.const_iter_read_plus_equal
-[       OK ] DequeIterTest.const_iter_read_plus_equal (5 ms)
+[       OK ] DequeIterTest.const_iter_read_plus_equal (15 ms)
 [ RUN      ] DequeIterTest.const_reverse_iter_read_minus_equal
-[       OK ] DequeIterTest.const_reverse_iter_read_minus_equal (5 ms)
+[       OK ] DequeIterTest.const_reverse_iter_read_minus_equal (21 ms)
 [ RUN      ] DequeIterTest.iter_read_plus_equal_ten
-[       OK ] DequeIterTest.iter_read_plus_equal_ten (4 ms)
+[       OK ] DequeIterTest.iter_read_plus_equal_ten (12 ms)
 [ RUN      ] DequeIterTest.reverse_iter_read_plus_equal_ten
-[       OK ] DequeIterTest.reverse_iter_read_plus_equal_ten (7 ms)
+[       OK ] DequeIterTest.reverse_iter_read_plus_equal_ten (11 ms)
 [ RUN      ] DequeIterTest.iter_read_minus_equal_ten
-[       OK ] DequeIterTest.iter_read_minus_equal_ten (5 ms)
+[       OK ] DequeIterTest.iter_read_minus_equal_ten (13 ms)
 [ RUN      ] DequeIterTest.reverse_iter_read_minus_equal_ten
-[       OK ] DequeIterTest.reverse_iter_read_minus_equal_ten (3 ms)
+[       OK ] DequeIterTest.reverse_iter_read_minus_equal_ten (12 ms)
 [ RUN      ] DequeIterTest.const_iter_read_plus_equal_ten
-[       OK ] DequeIterTest.const_iter_read_plus_equal_ten (5 ms)
+[       OK ] DequeIterTest.const_iter_read_plus_equal_ten (15 ms)
 [ RUN      ] DequeIterTest.const_reverse_iter_read_plus_equal_ten
-[       OK ] DequeIterTest.const_reverse_iter_read_plus_equal_ten (4 ms)
+[       OK ] DequeIterTest.const_reverse_iter_read_plus_equal_ten (20 ms)
 [ RUN      ] DequeIterTest.const_iter_read_minus_equal_ten
-[       OK ] DequeIterTest.const_iter_read_minus_equal_ten (4 ms)
+[       OK ] DequeIterTest.const_iter_read_minus_equal_ten (25 ms)
 [ RUN      ] DequeIterTest.const_reverse_iter_read_minus_equal_ten
-[       OK ] DequeIterTest.const_reverse_iter_read_minus_equal_ten (4 ms)
+[       OK ] DequeIterTest.const_reverse_iter_read_minus_equal_ten (15 ms)
 [ RUN      ] DequeIterTest.iter_max_elem
-[       OK ] DequeIterTest.iter_max_elem (6 ms)
+[       OK ] DequeIterTest.iter_max_elem (15 ms)
 [ RUN      ] DequeIterTest.const_iter_max_elem
-[       OK ] DequeIterTest.const_iter_max_elem (7 ms)
+[       OK ] DequeIterTest.const_iter_max_elem (18 ms)
 [ RUN      ] DequeIterTest.iter_min_elem
-[       OK ] DequeIterTest.iter_min_elem (6 ms)
+[       OK ] DequeIterTest.iter_min_elem (14 ms)
 [ RUN      ] DequeIterTest.const_iter_min_elem
-[       OK ] DequeIterTest.const_iter_min_elem (6 ms)
+[       OK ] DequeIterTest.const_iter_min_elem (24 ms)
 [ RUN      ] DequeIterTest.iter_fill
-[       OK ] DequeIterTest.iter_fill (8 ms)
+[       OK ] DequeIterTest.iter_fill (26 ms)
 [ RUN      ] DequeIterTest.iter_fill_n
-[       OK ] DequeIterTest.iter_fill_n (9 ms)
+[       OK ] DequeIterTest.iter_fill_n (24 ms)
 [ RUN      ] DequeIterTest.iter_fill_n_max
-[       OK ] DequeIterTest.iter_fill_n_max (8 ms)
+[       OK ] DequeIterTest.iter_fill_n_max (20 ms)
 [ RUN      ] DequeIterTest.iter_plus
-[       OK ] DequeIterTest.iter_plus (11 ms)
+[       OK ] DequeIterTest.iter_plus (51 ms)
 [ RUN      ] DequeIterTest.iter_minus
-[       OK ] DequeIterTest.iter_minus (17 ms)
+[       OK ] DequeIterTest.iter_minus (35 ms)
 [ RUN      ] DequeIterTest.iter_multiply
-[       OK ] DequeIterTest.iter_multiply (21 ms)
+[       OK ] DequeIterTest.iter_multiply (36 ms)
 [ RUN      ] DequeIterTest.iter_divide
-[       OK ] DequeIterTest.iter_divide (11 ms)
+[       OK ] DequeIterTest.iter_divide (27 ms)
 [ RUN      ] DequeIterTest.iter_negate
-[       OK ] DequeIterTest.iter_negate (10 ms)
+[       OK ] DequeIterTest.iter_negate (30 ms)
 [ RUN      ] DequeIterTest.iter_replace
-[       OK ] DequeIterTest.iter_replace (5 ms)
-[----------] 34 tests from DequeIterTest (265 ms total)
+[       OK ] DequeIterTest.iter_replace (22 ms)
+[----------] 34 tests from DequeIterTest (771 ms total)
+
+[----------] 21 tests from DequeSingleTest
+[ RUN      ] DequeSingleTest.default_size_constructor
+[       OK ] DequeSingleTest.default_size_constructor (17 ms)
+[ RUN      ] DequeSingleTest.default_argument_constructor
+[       OK ] DequeSingleTest.default_argument_constructor (9 ms)
+[ RUN      ] DequeSingleTest.push_pop_back
+[       OK ] DequeSingleTest.push_pop_back (24 ms)
+[ RUN      ] DequeSingleTest.push_pop_back_copy_assignment
+[       OK ] DequeSingleTest.push_pop_back_copy_assignment (25 ms)
+[ RUN      ] DequeSingleTest.push_back_swap
+[       OK ] DequeSingleTest.push_back_swap (17 ms)
+[ RUN      ] DequeSingleTest.push_back_copy
+[       OK ] DequeSingleTest.push_back_copy (23 ms)
+[ RUN      ] DequeSingleTest.back_front_push_back
+[       OK ] DequeSingleTest.back_front_push_back (9 ms)
+[ RUN      ] DequeSingleTest.push_back_rel_ops
+[       OK ] DequeSingleTest.push_back_rel_ops (12 ms)
+[ RUN      ] DequeSingleTest.copy_assignment_same_object
+[       OK ] DequeSingleTest.copy_assignment_same_object (6 ms)
+[ RUN      ] DequeSingleTest.copy_assignment_equal_size
+[       OK ] DequeSingleTest.copy_assignment_equal_size (8 ms)
+[ RUN      ] DequeSingleTest.copy_assignment_less_size
+[       OK ] DequeSingleTest.copy_assignment_less_size (12 ms)
+[ RUN      ] DequeSingleTest.copy_assignement_less_capacity
+[       OK ] DequeSingleTest.copy_assignement_less_capacity (12 ms)
+[ RUN      ] DequeSingleTest.copy_assignment_greater_capacity
+[       OK ] DequeSingleTest.copy_assignment_greater_capacity (12 ms)
+[ RUN      ] DequeSingleTest.copy_assignment_empty
+[       OK ] DequeSingleTest.copy_assignment_empty (12 ms)
+[ RUN      ] DequeSingleTest.copy_constructor_empty
+[       OK ] DequeSingleTest.copy_constructor_empty (6 ms)
+[ RUN      ] DequeSingleTest.fill_constructor_empty
+[       OK ] DequeSingleTest.fill_constructor_empty (5 ms)
+[ RUN      ] DequeSingleTest.resize_empty
+[       OK ] DequeSingleTest.resize_empty (9 ms)
+[ RUN      ] DequeSingleTest.resize_equal
+[       OK ] DequeSingleTest.resize_equal (13 ms)
+[ RUN      ] DequeSingleTest.resize_less_size
+[       OK ] DequeSingleTest.resize_less_size (8 ms)
+[ RUN      ] DequeSingleTest.resize_less_capacity
+[       OK ] DequeSingleTest.resize_less_capacity (14 ms)
+[ RUN      ] DequeSingleTest.resize_greater_capacity
+[       OK ] DequeSingleTest.resize_greater_capacity (13 ms)
+[----------] 21 tests from DequeSingleTest (296 ms total)
+
+[----------] 9 tests from DequeAcceptance
+[ RUN      ] DequeAcceptance.push_front
+[       OK ] DequeAcceptance.push_front (5 ms)
+[ RUN      ] DequeAcceptance.push_back
+[       OK ] DequeAcceptance.push_back (3 ms)
+[ RUN      ] DequeAcceptance.push_back_front_combo
+[       OK ] DequeAcceptance.push_back_front_combo (7 ms)
+[ RUN      ] DequeAcceptance.pop_back
+[       OK ] DequeAcceptance.pop_back (5 ms)
+[ RUN      ] DequeAcceptance.pop_front
+[       OK ] DequeAcceptance.pop_front (2 ms)
+[ RUN      ] DequeAcceptance.erase
+[       OK ] DequeAcceptance.erase (3 ms)
+[ RUN      ] DequeAcceptance.insert
+[       OK ] DequeAcceptance.insert (5 ms)
+[ RUN      ] DequeAcceptance.insert_begin
+[       OK ] DequeAcceptance.insert_begin (8 ms)
+[ RUN      ] DequeAcceptance.insert_end
+[       OK ] DequeAcceptance.insert_end (3 ms)
+[----------] 9 tests from DequeAcceptance (47 ms total)
 
 [----------] Global test environment tear-down
-[==========] 92 tests from 2 test cases ran. (1278 ms total)
-[  PASSED  ] 92 tests.
+[==========] 122 tests from 4 test cases ran. (2204 ms total)
+[  PASSED  ] 122 tests.
