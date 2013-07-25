@@ -9,7 +9,6 @@
 
 // Global Constant
 const ptrdiff_t SIZET = 10;
-const size_t USIZET = 10;
 
 // --------
 // includes
@@ -325,16 +324,7 @@ private:
 		{
 			ia_copy(that.pb, that.pe, this->pb);
 			b = pb[0];
-			size_type num_elem_last_ia = that.e - *that.pe;
-			if(num_elem_last_ia != 0)
-			{
-				--pe;
-				e = *pe + num_elem_last_ia;
-			}
-			else
-			{
-				e = pe[0];
-			}
+			e = pe[0];
 		}
 		this->count = that.count;
 		that.count = 0;
@@ -846,7 +836,7 @@ public:
 	{
 		size_type outer_array = (s % SIZET) ? s / SIZET + 1 : s / SIZET;
 		pb = cb = _astar.allocate(outer_array);
-		pe = (s < USIZET) ? pb + outer_array - 1 : pb + outer_array;
+		pe = pb + outer_array;
 		ce = cb + outer_array;
 		allocate(cb, ce);
 		ia_fill(s, v, pb);
