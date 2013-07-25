@@ -322,7 +322,7 @@ private:
 		// Copy old data
 		if(copy_array > 0)
 		{
-			ia_copy(that.pb, that.pe + 1, this->pb);
+			ia_copy(that.pb, that.pe, this->pb);
 			b = pb[0];
 			e = pe[0];
 		}
@@ -426,7 +426,7 @@ public:
 			 */
 			bool valid () const 
 			{
-				return _p != nullptr;
+				return (_p == nullptr && _index == 0) || _index >= 0;
 			}
 
 		public:
@@ -660,7 +660,7 @@ public:
 			 */
 			bool valid () const 
 			{
-				return _p != nullptr;
+				return (_p == nullptr && _index == 0) || _index >= 0;
 			}
 
 		public:
@@ -898,31 +898,27 @@ public:
 
 		// capacity = the number of elements from the allocated end to max end
 		size_type capacity = (cb == nullptr) ? 0 : (ce - pb) * SIZET;
-		if (that.size() == this->size())
+		if (that.size() == this->size()) // Equal Size
 		{
-			// Equal Size
 			std::copy(that.begin(), that.end(), this->begin());
 		}
-		else if (that.size() < this->size()) 
+		else if (that.size() < this->size()) // Less than Size 
 		{
-			// Less than Size
-			std::copy(that.begin(), that.end(), this->begin());
 			count = that.size();
+			std::copy(that.begin(), that.end(), this->begin());
 		}
-		else if (that.size() <= capacity) 
-		{
-			// Less than or equal to capacity
+		else if (that.size() <= capacity) // Less than or equal to capacity
+		{	
+			count = that.size();
 			std::copy(that.begin(), that.begin() + this->size(), this->begin());
 			uninitialized_copy(_a, that.begin() + this->size(), that.end(), this->end());
-			count = that.size();
 		}
-		else 
+		else // Greater than capacity 
 		{
-			// Greater than capacity
 			clear();
 			rebuild(that.size());
-			uninitialized_copy(_a, that.begin(), that.end(), this->begin());
 			count = that.size();
+			uninitialized_copy(_a, that.begin(), that.end(), this->begin());
 		}
 
 		// Regenerate pe and e pointers
@@ -1254,7 +1250,8 @@ public:
 	 */
 	void resize (size_type s, const_reference v = value_type()) 
 	{
-		size_type capacity = (cb == nullptr) ? 0 : (ce - pb) * SIZET;
+		int add = s - this->size();
+		size_type capacity = (cb == nullptr) ? 0 : (ce - pe) * SIZET;
 		if (s == this->size())
 		{
 			return;
@@ -1273,7 +1270,6 @@ public:
 		}
 		else if (s <= capacity)
 		{
-			int add = s - this->size();
 			int ia_remain = SIZET - (e - *pe);
 			if(ia_remain != 0)
 			{
@@ -1281,13 +1277,21 @@ public:
 				uninitialized_fill(_a, e, e + fillsize, v);
 				e += fillsize;
 				add -= fillsize;
+				ia_remain -= fillsize;
 			}
 
 			if(add != 0)
 			{
-				++pe;
 				ia_fill(add, v, pe);
+				++pe;
 			}
+
+			if(ia_remain == 0)
+			{
+				++pe;
+				e = *pe;
+			}
+
 			count = s;
 		}
 		else 
