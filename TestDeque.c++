@@ -720,7 +720,7 @@ TEST_F(DequeTest, subscript_operator)
 	ASSERT_TRUE(d1.size() == 1);
 }
 
-TEST_F(DequeTest, subscript_operator_beyond_bounds)
+TEST_F(DequeTest, subscript_operator_multiple)
 {
 	ASSERT_TRUE(d1.size() == 0);
 	d1.push_back(1);
@@ -730,13 +730,17 @@ TEST_F(DequeTest, subscript_operator_beyond_bounds)
 	ASSERT_TRUE(d1[0] == 1);
 	ASSERT_TRUE(d1[1] == 2);
 	ASSERT_TRUE(d1[2] == 3);
-	ASSERT_TRUE(d1[3] > 0 || d1[3] <= 0);
 }
 
-TEST_F(DequeTest, subscript_operator_empty)
+TEST_F(DequeTest, subscript_operator_iterate)
 {
 	ASSERT_TRUE(d1.size() == 0);
-	ASSERT_TRUE(d1[0] <= 0 || d1[0] > 0);
+	d1.push_back(1);
+	d1.push_back(2);
+	d1.push_back(3);
+	ASSERT_TRUE(d1.size() == 3);
+	for(size_t i = 1; i <= d1.size(); ++i)
+		ASSERT_TRUE(d1[i] == (int) i);
 }
 
 TEST_F(DequeTest, at)
@@ -1715,6 +1719,8 @@ TEST(DequeAcceptanceTest, pop_front)
 	MyDeque<int> y;
 	for(int i = 0; i < ITERATION; ++i)
 	{
+		x.push_back(108);
+		y.push_back(108);
 		x.push_front(42);
 		y.push_front(42);
 	}
@@ -1734,10 +1740,10 @@ TEST(DequeAcceptanceTest, erase_back)
 	MyDeque<int> y;
 	for(int i = 0; i < ITERATION; ++i)
 	{
-		x.push_front(42);
-		y.push_front(42);
 		x.push_back(108);
 		y.push_back(108);
+		x.push_front(42);
+		y.push_front(42);
 	}
 
 	while(!x.empty() && !y.empty())
@@ -1755,10 +1761,10 @@ TEST(DequeAcceptanceTest, erase_front)
 	MyDeque<int> y;
 	for(int i = 0; i < ITERATION; ++i)
 	{
-		x.push_front(42);
-		y.push_front(42);
 		x.push_back(108);
 		y.push_back(108);
+		x.push_front(42);
+		y.push_front(42);
 	}
 
 	while(!x.empty() && !y.empty())
@@ -1871,8 +1877,8 @@ TEST(DequePrivate, set_deque_ptr)
 	ASSERT_TRUE(x.pb == nullptr);
 	ASSERT_TRUE(x.pe == nullptr);
 	ASSERT_TRUE(x.ce == nullptr);
-	ASSERT_TRUE(x.b == nullptr);
-	ASSERT_TRUE(x.e == nullptr);
+	ASSERT_TRUE(x.b == 0);
+	ASSERT_TRUE(x.e == 0);
 }
 
 TEST(DequePrivate, rebuild)

@@ -7,10 +7,6 @@
 #ifndef Deque_h
 #define Deque_h
 
-// Global Constant
-const ptrdiff_t SIZET = 1000;
-const size_t USIZET = 1000;
-
 // --------
 // includes
 // --------
@@ -21,6 +17,11 @@ const size_t USIZET = 1000;
 #include <memory>    // allocator
 #include <stdexcept> // out_of_range
 #include <utility>   // !=, <=, >, >=
+#include <stddef.h>
+
+// Global Constant
+const ptrdiff_t SIZET = 1000;
+const size_t USIZET = 1000;
 
 // -----
 // using
@@ -199,8 +200,8 @@ private:
 	pointer* ce;
 	pointer* pb;
 	pointer* pe;
-	pointer b;
-	pointer e;
+	ptrdiff_t b;
+	ptrdiff_t e;
 	size_type count;
 
 private:
@@ -217,7 +218,7 @@ private:
 		if (cb == 0 && ce == 0 && pb == 0 && pe == 0 && b == 0 && e == 0 && count == 0)
 			return true;
 		// Non-Empty Non Circular
-		if(cb <= pb && pb <= pe && pe <= ce && count >= 0)
+		if(cb <= pb && pb <= pe && pe <= ce && b >= 0 && b <= SIZET && e >= 0 && e < SIZET && count >= 0)
 			return true;
 		return false;
 	}
@@ -232,8 +233,9 @@ private:
 	{
 		for(; add > 0; add -= SIZET)
 		{
-			size_type inner_array = (add >= SIZET) ? SIZET : add;
-			e = uninitialized_fill(_a, *x, *x + inner_array, v);
+			ptrdiff_t inner_array = (add >= SIZET) ? SIZET : add;
+			uninitialized_fill(_a, *x, *x + inner_array, v);
+			e = (inner_array == SIZET) ? 0 : inner_array;
 			++x;
 		}
 	}
@@ -286,8 +288,8 @@ private:
 			*_b = _a.allocate(SIZET);
 			++_b;
 		}
-		b = pb[0];
-		e = pe[0];
+		b = 0;
+		e = 0;
 	}
 
 	///
@@ -299,8 +301,9 @@ private:
 		ce = nullptr;
 		pb = nullptr;
 		pe = nullptr;
-		b = nullptr;
-		e = nullptr;
+		b = 0;
+		e = 0;
+		count = 0;
 	}
 
 	///
@@ -336,23 +339,17 @@ private:
 		// Copy old data
 		if(copy_array > 0)
 		{
-			ptrdiff_t bdiff = that.b - *that.pb;
-			assert(bdiff <= SIZET);
-			if(that.pb == that.pe)
+			if(that.e > 0)
 			{
-				ptrdiff_t ediff = that.e - *that.pe;
-				assert(ediff <= SIZET);
 				ia_copy(that.pb, that.pe + 1, this->pb);
-				b = *pb + bdiff;
 				--pe;
-				e = *pe + ediff;
 			}
 			else
 			{
 				ia_copy(that.pb, that.pb + copy_array, this->pb);
-				b = *pb + bdiff;
-				e = *pe;
 			}
+			b = that.b;
+			e = that.e;
 		}
 		this->count = that.count;
 		that.count = 0;
@@ -845,7 +842,6 @@ public:
 	explicit MyDeque (const allocator_type& a = allocator_type()) : _a (a)
 	{
 		set_deque_ptr();
-		count = 0;
 		assert(valid());
 	}
 
@@ -962,11 +958,10 @@ public:
 		if(cb != nullptr)
 		{
 			size_type offsetBOA = pb - cb;
-			size_type offsetBIA = b - *pb;
-			size_type outer_array_index = (this->size() + offsetBIA) / SIZET + offsetBOA;
-			size_type inner_array_index = (this->size() + offsetBIA) % SIZET;
+			size_type outer_array_index = (this->size() + b) / SIZET + offsetBOA;
+			size_type inner_array_index = (this->size() + b) % SIZET;
 			pe = cb + outer_array_index;
-			e = *pe + inner_array_index;
+			e = inner_array_index;
 		}
 
 		assert(valid());
@@ -988,9 +983,8 @@ public:
 		if(cb == nullptr)
 			return dummy;
 		size_type offsetBOA = pb - cb;
-		size_type offsetBIA = b - *pb;
-		size_type outer_array_index = (index + offsetBIA) / SIZET + offsetBOA;
-		size_type inner_array_index = (index + offsetBIA) % SIZET;
+		size_type outer_array_index = (index + b) / SIZET + offsetBOA;
+		size_type inner_array_index = (index + b) % SIZET;
 		return cb[outer_array_index][inner_array_index];
 	}
 
@@ -1186,29 +1180,29 @@ public:
 	*/
 	iterator insert (iterator iter, const_reference v) 
 	{
-		if(cb == nullptr || e == *ce)
+		if(cb == nullptr || (e == 0 && pe == ce))
 			rebuild(this->size() + 1);
 
-		size_type ia_remain = SIZET - (e - *pe);
+		size_type ia_remain = SIZET - e;
 		if(ia_remain == 1)
 		{
 			++pe;
-			e = *pe;
+			e = 0;
 		}
 		else
 		{
 			++e;
 		}
-		++count;
-		iterator lhs = this->end() - 1;
-		iterator rhs = this->end() - 2;
+		uninitialized_fill(_a, this->end(), this->end() + 1, v);
+		iterator lhs = this->end();
+		iterator rhs = this->end() - 1;
 		while(lhs != iter)
 		{
 			std::swap(*lhs, *rhs);
 			--lhs;
 			--rhs;
 		}
-		uninitialized_fill(_a, iter, iter + 1, v);
+		++count;
 		assert(valid());
 		return iter;
 	}
@@ -1234,10 +1228,10 @@ public:
 	{
 		destroy(_a, this->begin(), this->begin() + 1);
 		++b;
-		if(b - *pb == SIZET && count != 1)
+		if(b == SIZET && count != 1)
 		{
 			++pb;
-			b = *pb;
+			b = 0;
 		}
 		--count;
 		assert(valid());
@@ -1264,14 +1258,14 @@ public:
 	void push_front (const_reference v) 
 	{
 		// Check capacity
-		if(cb == nullptr || *cb == b)
+		if(cb == nullptr || (cb == pb && b == 0))
 			rebuild(this->size() + 1);
 
-		int ia_remain = b - *pb;
+		int ia_remain = b;
 		if(ia_remain == 0)
 		{
 			--pb;
-			b = *pb + SIZET - 1;
+			b = SIZET - 1;
 		}
 		else
 		{
@@ -1305,27 +1299,26 @@ public:
 		if (s < this->size())
 		{
 			size_type offsetBOA = pb - cb;
-			size_type offsetBIA = b - *pb;
-			size_type outer_array_index = (s + offsetBIA) / SIZET + offsetBOA;
-			size_type inner_array_index = (s + offsetBIA) % SIZET;
+			size_type outer_array_index = (s + b) / SIZET + offsetBOA;
+			size_type inner_array_index = (s + b) % SIZET;
 			pe = cb + outer_array_index;
-			e = *pe + inner_array_index;
-			size_type ia_remain = SIZET - (e - *pe);
+			e = inner_array_index;
+			size_type ia_remain = SIZET - e;
 			if(ia_remain == 0)
 			{
 				++pe;
-				e = *pe;
+				e = 0;
 			}
 			destroy(_a, this->begin() + s, this->end());
 			count = s;
 		}
 		else if (add <= capacity)
 		{
-			size_type ia_remain = SIZET - (e - *pe);
+			size_type ia_remain = SIZET - e;
 			if(ia_remain != 0)
 			{
 				int fillsize = std::min(add, ia_remain);
-				uninitialized_fill(_a, e, e + fillsize, v);
+				uninitialized_fill(_a, *pe + e, *pe + e + fillsize, v);
 				e += fillsize;
 				add -= fillsize;
 				ia_remain -= fillsize;
@@ -1334,7 +1327,7 @@ public:
 			if(ia_remain == 0)
 			{
 				++pe;
-				e = *pe;
+				e = 0;
 			}
 
 			if(add != 0)
