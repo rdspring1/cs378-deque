@@ -90,18 +90,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdexcept&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;stddef.h&gt;</code><br/>
 <code>#include &quot;gtest/gtest.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Allocator_8h_source.html">Allocator.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Deque_8h_source.html">Deque.h</a>&quot;</code><br/>
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDequeTest.html">DequeTest</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDequeTest.html">DequeTest&lt; C &gt;</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDequeIterTest.html">DequeIterTest</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a70ed59adcb4159ac551058053e649640">SIZE</a>&#160;&#160;&#160;101</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a6a1d6e1a12975a4e9a0b5b952e79eaad">private</a>&#160;&#160;&#160;public</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a363c8dcebb1777654ad1703136a14ec8">protected</a>&#160;&#160;&#160;public</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a70ed59adcb4159ac551058053e649640">SIZE</a>&#160;&#160;&#160;500</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a7ccd4324b1ad414aaa49ecf82c2d9eef">ITERATION</a>&#160;&#160;&#160;1000</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a388979199bec2e8f6d0b04375504273a">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, equal_empty)</td></tr>
@@ -148,8 +151,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#af4311f3833b472db57a29cec7ac2ac45">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, clear_empty)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#af22ec651a3db1d82cf7b974f129789a9">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, clear_multiple)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ae7327b88daa67634c7a33d4e3874fad0">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, subscript_operator)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ac864cf2908bbe9466fb2527d5bdfe36b">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, subscript_operator_beyond_bounds)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a47ef5ba5d4e5ab7824d49b151709785a">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, subscript_operator_empty)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a9eb4295817939f2679b70ea659e84420">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, subscript_operator_multiple)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#af82768c2944cb6dec13ec00501ff79b5">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, subscript_operator_iterate)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a6d72124e49ace8265e44a807e4899f33">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, at)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ac4d5749180d9ecd0ec005932a7528680">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, at_beyond_bounds)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#aea13926dedb00921e27c4c2d1a369645">TEST_F</a> (<a class="el" href="classDequeTest.html">DequeTest</a>, at_empty)</td></tr>
@@ -204,14 +207,90 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a09edb4d5c5e162044fee8d4ebc4e41be">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, push_back_copy)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a0e744a35c6e329d71514da5f43ac4942">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, back_front_push_back)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, push_back_rel_ops)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#abd2c4fe6f8445d5763121fe625b738d7">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, copy_assignment_same_object)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a9acc9c22fbbbade0225da2bdda709e63">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, copy_assignment_equal_size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ac8f0787a044a10b56627af71f318cedf">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, copy_assignment_less_size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#adb883443580df726da0aea194b84adc5">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, copy_assignement_less_capacity)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#acf7cb8de3b29fb99edd30380e33a82b6">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, copy_assignment_greater_capacity)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a0d7b02a1f189f60cd047f9b842b06184">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, copy_assignment_empty)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a1174ef5d7afdf9c88d2ee755737c4e8f">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, copy_constructor_empty)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#adff400dc2d0349c9b2aa9d008b5db0d0">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, fill_constructor_empty)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a6b357e7444711aeab1249aebb043d95c">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, resize_empty)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#af01739be7e119f2b0ca6059d1133bddc">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, resize_equal)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a297e47f4d920e5d786486975802b40c7">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, resize_less_size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a9cc12c87d68d26f4f88d881df89f52fe">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, resize_less_capacity)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> (<a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>, resize_greater_capacity)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a18c2f6d8c518ef6633de680549fbed0a">TEST</a> (DequeAcceptanceTest, push_front)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#aeb7fd4ffe359010e0b7c5e3bb5663c8f">TEST</a> (DequeAcceptanceTest, push_back)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#aec2e59531e80da1efffc99f2d0e343b3">TEST</a> (DequeAcceptanceTest, push_back_front_combo)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a2453cd04396b0d4505dfde7d5a8d1525">TEST</a> (DequeAcceptanceTest, pop_back)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#aef4f59152efeae003818305eec8514db">TEST</a> (DequeAcceptanceTest, pop_front)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a1258c45834ddaa63f15293df36d03113">TEST</a> (DequeAcceptanceTest, erase_back)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#aa989ff5f77ebddc11a93efd2dff5b729">TEST</a> (DequeAcceptanceTest, erase_front)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ac9d678f3244489603837f0c4e352a524">TEST</a> (DequeAcceptanceTest, insert)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#afaeb7cef0ac8d783d23411578f71f70b">TEST</a> (DequeAcceptanceTest, insert_begin)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ab5c250da1c758040045efa396faae5da">TEST</a> (DequeAcceptanceTest, insert_end)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a08287c2c69d464ee4680181b9a28f1af">TEST</a> (DequePrivate, ia_fill)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a5abcf08e34ae1017c4cfdf60dbe43191">TEST</a> (DequePrivate, ia_fill_medium)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a7b528eacd8c0b10d98174f60c6251c9d">TEST</a> (DequePrivate, ia_fill_large)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a808556673e2fd1793745950f3e828772">TEST</a> (DequePrivate, set_deque_ptr)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ae3f62d1e3e9810c97b660b80fda23581">TEST</a> (DequePrivate, rebuild_empty)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#aa0ce4401e8e0e03143f759e1ce91b479">TEST</a> (DequePrivate, rebuild_one)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a4329238b840ed6671db73361c2fefa6f">TEST</a> (DequePrivate, rebuild_less_sizet)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a59ffbef104d58e583793003d3674c98b">TEST</a> (DequePrivate, rebuild_greater_sizet)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ac9759b1fd3ecd02566b2cb8be963f0ab">TEST</a> (DequePrivate, ia_copy)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ad32aeea96f1856aaaa476e08e5fd8742">TEST</a> (DequePrivate, ia_copy_sizet)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#adf89a5fb92ec091a9c4d19e84bef524d">TEST</a> (DequePrivate, ia_copy_swap)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#ab9b76256b166aa2af877819bce90ff09">TEST</a> (DequePrivate, ia_copy_swap_x)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a7918d374b7893228d19eee217c65a110">TEST</a> (DequePrivate, ia_copy_swap_y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> (DequePrivate, ia_copy_swap_large)</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
+<a class="anchor" id="a7ccd4324b1ad414aaa49ecf82c2d9eef"></a><!-- doxytag: member="TestDeque.c++::ITERATION" ref="a7ccd4324b1ad414aaa49ecf82c2d9eef" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="TestDeque_8c_09_09.html#a7ccd4324b1ad414aaa49ecf82c2d9eef">ITERATION</a>&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6a1d6e1a12975a4e9a0b5b952e79eaad"></a><!-- doxytag: member="TestDeque.c++::private" ref="a6a1d6e1a12975a4e9a0b5b952e79eaad" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="tsm544-TestDeque_8c_09_09.html#a6a1d6e1a12975a4e9a0b5b952e79eaad">private</a>&#160;&#160;&#160;public</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a363c8dcebb1777654ad1703136a14ec8"></a><!-- doxytag: member="TestDeque.c++::protected" ref="a363c8dcebb1777654ad1703136a14ec8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="tsm544-TestDeque_8c_09_09.html#a363c8dcebb1777654ad1703136a14ec8">protected</a>&#160;&#160;&#160;public</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a70ed59adcb4159ac551058053e649640"></a><!-- doxytag: member="TestDeque.c++::SIZE" ref="a70ed59adcb4159ac551058053e649640" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="TestDeque_8c_09_09.html#a70ed59adcb4159ac551058053e649640">SIZE</a>&#160;&#160;&#160;101</td>
+          <td class="memname">#define <a class="el" href="TestDeque_8c_09_09.html#a70ed59adcb4159ac551058053e649640">SIZE</a>&#160;&#160;&#160;500</td>
         </tr>
       </table>
 </div>
@@ -220,12 +299,660 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a18c2f6d8c518ef6633de680549fbed0a"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a18c2f6d8c518ef6633de680549fbed0a" args="(DequeAcceptanceTest, push_front)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">push_front&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aeb7fd4ffe359010e0b7c5e3bb5663c8f"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="aeb7fd4ffe359010e0b7c5e3bb5663c8f" args="(DequeAcceptanceTest, push_back)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">push_back&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aec2e59531e80da1efffc99f2d0e343b3"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="aec2e59531e80da1efffc99f2d0e343b3" args="(DequeAcceptanceTest, push_back_front_combo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">push_back_front_combo&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2453cd04396b0d4505dfde7d5a8d1525"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a2453cd04396b0d4505dfde7d5a8d1525" args="(DequeAcceptanceTest, pop_back)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pop_back&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aef4f59152efeae003818305eec8514db"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="aef4f59152efeae003818305eec8514db" args="(DequeAcceptanceTest, pop_front)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pop_front&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1258c45834ddaa63f15293df36d03113"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a1258c45834ddaa63f15293df36d03113" args="(DequeAcceptanceTest, erase_back)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">erase_back&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa989ff5f77ebddc11a93efd2dff5b729"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="aa989ff5f77ebddc11a93efd2dff5b729" args="(DequeAcceptanceTest, erase_front)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">erase_front&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac9d678f3244489603837f0c4e352a524"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="ac9d678f3244489603837f0c4e352a524" args="(DequeAcceptanceTest, insert)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">insert&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afaeb7cef0ac8d783d23411578f71f70b"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="afaeb7cef0ac8d783d23411578f71f70b" args="(DequeAcceptanceTest, insert_begin)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">insert_begin&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab5c250da1c758040045efa396faae5da"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="ab5c250da1c758040045efa396faae5da" args="(DequeAcceptanceTest, insert_end)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequeAcceptanceTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">insert_end&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a08287c2c69d464ee4680181b9a28f1af"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a08287c2c69d464ee4680181b9a28f1af" args="(DequePrivate, ia_fill)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_fill&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5abcf08e34ae1017c4cfdf60dbe43191"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a5abcf08e34ae1017c4cfdf60dbe43191" args="(DequePrivate, ia_fill_medium)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_fill_medium&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7b528eacd8c0b10d98174f60c6251c9d"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a7b528eacd8c0b10d98174f60c6251c9d" args="(DequePrivate, ia_fill_large)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_fill_large&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a808556673e2fd1793745950f3e828772"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a808556673e2fd1793745950f3e828772" args="(DequePrivate, set_deque_ptr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">set_deque_ptr&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae3f62d1e3e9810c97b660b80fda23581"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="ae3f62d1e3e9810c97b660b80fda23581" args="(DequePrivate, rebuild_empty)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rebuild_empty&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa0ce4401e8e0e03143f759e1ce91b479"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="aa0ce4401e8e0e03143f759e1ce91b479" args="(DequePrivate, rebuild_one)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rebuild_one&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4329238b840ed6671db73361c2fefa6f"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a4329238b840ed6671db73361c2fefa6f" args="(DequePrivate, rebuild_less_sizet)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rebuild_less_sizet&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a59ffbef104d58e583793003d3674c98b"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a59ffbef104d58e583793003d3674c98b" args="(DequePrivate, rebuild_greater_sizet)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rebuild_greater_sizet&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac9759b1fd3ecd02566b2cb8be963f0ab"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="ac9759b1fd3ecd02566b2cb8be963f0ab" args="(DequePrivate, ia_copy)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_copy&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad32aeea96f1856aaaa476e08e5fd8742"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="ad32aeea96f1856aaaa476e08e5fd8742" args="(DequePrivate, ia_copy_sizet)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_copy_sizet&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adf89a5fb92ec091a9c4d19e84bef524d"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="adf89a5fb92ec091a9c4d19e84bef524d" args="(DequePrivate, ia_copy_swap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_copy_swap&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab9b76256b166aa2af877819bce90ff09"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="ab9b76256b166aa2af877819bce90ff09" args="(DequePrivate, ia_copy_swap_x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_copy_swap_x&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7918d374b7893228d19eee217c65a110"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a7918d374b7893228d19eee217c65a110" args="(DequePrivate, ia_copy_swap_y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_copy_swap_y&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a80609b9b8242f4e3a0c05e09c77e67ca"></a><!-- doxytag: member="TestDeque.c++::TEST" ref="a80609b9b8242f4e3a0c05e09c77e67ca" args="(DequePrivate, ia_copy_swap_large)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a80609b9b8242f4e3a0c05e09c77e67ca">TEST</a> </td>
+          <td>(</td>
+          <td class="paramtype">DequePrivate&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ia_copy_swap_large&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a388979199bec2e8f6d0b04375504273a"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a388979199bec2e8f6d0b04375504273a" args="(DequeTest, equal_empty)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -252,7 +979,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -279,7 +1006,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -306,7 +1033,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -333,7 +1060,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -360,7 +1087,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -387,7 +1114,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -414,7 +1141,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -441,7 +1168,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -468,7 +1195,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -495,7 +1222,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -522,7 +1249,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -549,7 +1276,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -576,7 +1303,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -603,7 +1330,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -630,7 +1357,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -657,7 +1384,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -684,7 +1411,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -711,7 +1438,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -738,7 +1465,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -765,7 +1492,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -792,7 +1519,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -819,7 +1546,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -846,7 +1573,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -873,7 +1600,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -900,7 +1627,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -927,7 +1654,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -954,7 +1681,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -981,7 +1708,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1008,7 +1735,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1035,7 +1762,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1062,7 +1789,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1089,7 +1816,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1116,7 +1843,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1143,7 +1870,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1170,7 +1897,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1197,7 +1924,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1224,7 +1951,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1251,7 +1978,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1278,7 +2005,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1305,7 +2032,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1332,7 +2059,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1359,7 +2086,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1386,7 +2113,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1408,12 +2135,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac864cf2908bbe9466fb2527d5bdfe36b"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="ac864cf2908bbe9466fb2527d5bdfe36b" args="(DequeTest, subscript_operator_beyond_bounds)" -->
+<a class="anchor" id="a9eb4295817939f2679b70ea659e84420"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a9eb4295817939f2679b70ea659e84420" args="(DequeTest, subscript_operator_multiple)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1421,7 +2148,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">subscript_operator_beyond_bounds&#160;</td>
+          <td class="paramtype">subscript_operator_multiple&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -1435,12 +2162,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a47ef5ba5d4e5ab7824d49b151709785a"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a47ef5ba5d4e5ab7824d49b151709785a" args="(DequeTest, subscript_operator_empty)" -->
+<a class="anchor" id="af82768c2944cb6dec13ec00501ff79b5"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="af82768c2944cb6dec13ec00501ff79b5" args="(DequeTest, subscript_operator_iterate)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1448,7 +2175,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">subscript_operator_empty&#160;</td>
+          <td class="paramtype">subscript_operator_iterate&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -1467,7 +2194,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1494,7 +2221,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1521,7 +2248,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1548,7 +2275,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1575,7 +2302,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1602,7 +2329,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1629,7 +2356,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1656,7 +2383,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1683,7 +2410,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1710,7 +2437,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1737,7 +2464,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1764,7 +2491,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeTest.html">DequeTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1791,7 +2518,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1818,7 +2545,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1845,7 +2572,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1872,7 +2599,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1899,7 +2626,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1926,7 +2653,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1953,7 +2680,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -1980,7 +2707,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2007,7 +2734,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2034,7 +2761,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2061,7 +2788,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2088,7 +2815,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2115,7 +2842,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2142,7 +2869,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2169,7 +2896,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2196,7 +2923,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2223,7 +2950,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2250,7 +2977,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2277,7 +3004,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2304,7 +3031,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2331,7 +3058,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2358,7 +3085,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2385,7 +3112,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2412,7 +3139,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2439,7 +3166,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2466,7 +3193,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2493,7 +3220,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2520,7 +3247,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2547,7 +3274,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2574,7 +3301,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2601,7 +3328,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2628,7 +3355,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2655,7 +3382,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2682,7 +3409,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeIterTest.html">DequeIterTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2709,7 +3436,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2736,7 +3463,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2763,7 +3490,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2790,7 +3517,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2817,7 +3544,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2844,7 +3571,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2871,7 +3598,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2898,7 +3625,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#a2dbcb34fa1d318bbd296bca34bc31430">TEST_F</a> </td>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
           <td class="paramname">, </td>
@@ -2907,6 +3634,357 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">push_back_rel_ops&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abd2c4fe6f8445d5763121fe625b738d7"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="abd2c4fe6f8445d5763121fe625b738d7" args="(DequeSingleTest, copy_assignment_same_object)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">copy_assignment_same_object&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9acc9c22fbbbade0225da2bdda709e63"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a9acc9c22fbbbade0225da2bdda709e63" args="(DequeSingleTest, copy_assignment_equal_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">copy_assignment_equal_size&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac8f0787a044a10b56627af71f318cedf"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="ac8f0787a044a10b56627af71f318cedf" args="(DequeSingleTest, copy_assignment_less_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">copy_assignment_less_size&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adb883443580df726da0aea194b84adc5"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="adb883443580df726da0aea194b84adc5" args="(DequeSingleTest, copy_assignement_less_capacity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">copy_assignement_less_capacity&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acf7cb8de3b29fb99edd30380e33a82b6"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="acf7cb8de3b29fb99edd30380e33a82b6" args="(DequeSingleTest, copy_assignment_greater_capacity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">copy_assignment_greater_capacity&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0d7b02a1f189f60cd047f9b842b06184"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a0d7b02a1f189f60cd047f9b842b06184" args="(DequeSingleTest, copy_assignment_empty)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">copy_assignment_empty&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1174ef5d7afdf9c88d2ee755737c4e8f"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a1174ef5d7afdf9c88d2ee755737c4e8f" args="(DequeSingleTest, copy_constructor_empty)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">copy_constructor_empty&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adff400dc2d0349c9b2aa9d008b5db0d0"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="adff400dc2d0349c9b2aa9d008b5db0d0" args="(DequeSingleTest, fill_constructor_empty)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">fill_constructor_empty&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6b357e7444711aeab1249aebb043d95c"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a6b357e7444711aeab1249aebb043d95c" args="(DequeSingleTest, resize_empty)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">resize_empty&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af01739be7e119f2b0ca6059d1133bddc"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="af01739be7e119f2b0ca6059d1133bddc" args="(DequeSingleTest, resize_equal)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">resize_equal&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a297e47f4d920e5d786486975802b40c7"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a297e47f4d920e5d786486975802b40c7" args="(DequeSingleTest, resize_less_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">resize_less_size&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9cc12c87d68d26f4f88d881df89f52fe"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="a9cc12c87d68d26f4f88d881df89f52fe" args="(DequeSingleTest, resize_less_capacity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">resize_less_capacity&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae4ebc0db383632d76fe104ea13e62b4d"></a><!-- doxytag: member="TestDeque.c++::TEST_F" ref="ae4ebc0db383632d76fe104ea13e62b4d" args="(DequeSingleTest, resize_greater_capacity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="TestDeque_8c_09_09.html#ae4ebc0db383632d76fe104ea13e62b4d">TEST_F</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classDequeSingleTest.html">DequeSingleTest</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">resize_greater_capacity&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -2938,7 +4016,7 @@ Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 24 2013 17:24:47 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 25 2013 20:48:10 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

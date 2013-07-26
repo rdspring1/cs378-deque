@@ -121,7 +121,7 @@ std::bidirectional_iterator_tag&#160;</td><td class="memItemRight" valign="botto
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classMyDeque.html#a9e89ddd823825b5b1e97489f54193e5a">MyDeque::reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#ad298e03aa9f5460ea334b8925a3f0fec">reference</a></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#a942b5be919031928ffd7713b73bd7d63">iterator</a> (<a class="el" href="classMyDeque.html">MyDeque</a> *p, <a class="el" href="classMyDeque.html#af6a509bfd15ec8760bb0bd6797c63139">size_type</a> i)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#aa4b06eb1d6d8dd8c867cc46977a285f1">iterator</a> (<a class="el" href="classMyDeque.html">MyDeque</a> *p=nullptr, <a class="el" href="classMyDeque.html#af6a509bfd15ec8760bb0bd6797c63139">size_type</a> i=0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyDeque_1_1iterator.html#ad298e03aa9f5460ea334b8925a3f0fec">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#aba03384f8475a655ee2d4cb9b6f3f120">operator*</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyDeque_1_1iterator.html#a53ab0269d52f5abc239c3464f84f41f5">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#a00418fed02570faa23c503bc3163c977">operator-&gt;</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyDeque_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#aea4d767f0feef8f2ae20795a6ddca9cd">operator++</a> ()</td></tr>
@@ -130,6 +130,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyDeque_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#afbdc6db5ce8ff0214e8faa139fe9b8fa">operator--</a> (int)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyDeque_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#acf175f333af615fe2adcd2db2adbf839">operator+=</a> (<a class="el" href="classMyDeque_1_1iterator.html#a47b04b83a63123bdde68d005ce4d40d9">difference_type</a> d)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyDeque_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#a5d3bed278a612bf52ee90020136d6393">operator-=</a> (<a class="el" href="classMyDeque_1_1iterator.html#a47b04b83a63123bdde68d005ce4d40d9">difference_type</a> d)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#a5e876801f096c42ca2851f78fc42e86f">operator const_iterator</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html#ab920c0a524569f660746deefe682bce3">valid</a> () const </td></tr>
@@ -226,23 +227,23 @@ template&lt;typename T, typename A = std::allocator&lt;T&gt;&gt; </div>
 </div>
 </div>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a942b5be919031928ffd7713b73bd7d63"></a><!-- doxytag: member="MyDeque::iterator::iterator" ref="a942b5be919031928ffd7713b73bd7d63" args="(MyDeque *p, size_type i)" -->
+<a class="anchor" id="aa4b06eb1d6d8dd8c867cc46977a285f1"></a><!-- doxytag: member="MyDeque::iterator::iterator" ref="aa4b06eb1d6d8dd8c867cc46977a285f1" args="(MyDeque *p=nullptr, size_type i=0)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T, typename A = std::allocator&lt;T&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMyDeque.html">MyDeque</a>&lt; T, A &gt;::<a class="el" href="classMyDeque_1_1iterator.html#a942b5be919031928ffd7713b73bd7d63">iterator::iterator</a> </td>
+          <td class="memname"><a class="el" href="classMyDeque.html">MyDeque</a>&lt; T, A &gt;::<a class="el" href="classMyDeque_1_1iterator.html#aa4b06eb1d6d8dd8c867cc46977a285f1">iterator::iterator</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classMyDeque.html">MyDeque</a> *&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
+          <td class="paramname"><em>p</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classMyDeque.html#af6a509bfd15ec8760bb0bd6797c63139">size_type</a>&#160;</td>
-          <td class="paramname"><em>i</em>&#160;</td>
+          <td class="paramname"><em>i</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -264,6 +265,24 @@ template&lt;typename T, typename A = std::allocator&lt;T&gt;&gt; </div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a5e876801f096c42ca2851f78fc42e86f"></a><!-- doxytag: member="MyDeque::iterator::operator const_iterator" ref="a5e876801f096c42ca2851f78fc42e86f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, typename A = std::allocator&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMyDeque.html">MyDeque</a>&lt; T, A &gt;::iterator::operator <a class="el" href="classMyDeque_1_1const__iterator.html">const_iterator</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aba03384f8475a655ee2d4cb9b6f3f120"></a><!-- doxytag: member="MyDeque::iterator::operator*" ref="aba03384f8475a655ee2d4cb9b6f3f120" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -664,7 +683,7 @@ template&lt;typename T, typename A = std::allocator&lt;T&gt;&gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 24 2013 17:24:47 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 25 2013 20:48:10 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

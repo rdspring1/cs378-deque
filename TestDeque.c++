@@ -1852,6 +1852,41 @@ TEST(DequePrivate, ia_fill)
 	A.deallocate(outer_array, 1);
 }
 
+TEST(DequePrivate, ia_fill_medium)
+{
+	MyDeque<int> x;
+	std::allocator<int*> A;
+	int** outer_array = A.allocate(5);
+	int** end = outer_array + 5;
+
+	for(int** n = outer_array; n != end; ++n)
+		*n = x._a.allocate(SIZET);
+
+	x.ia_fill(5000, 5, outer_array); 
+
+	int** begin = outer_array;
+	while(begin != end)
+	{
+		int* ia_b = *outer_array;
+		int* ia_end = *outer_array + SIZET;
+		while(ia_b != ia_end)
+		{
+			ASSERT_EQ(*ia_b, 5);
+			++ia_b;
+		}
+		destroy(x._a, *outer_array, *outer_array + SIZET);
+		++begin;
+	}
+
+	int** dbegin = outer_array;
+	while(dbegin != end)
+	{
+		x._a.deallocate(*dbegin, SIZET);
+		++dbegin;
+	}
+	A.deallocate(outer_array, 5);
+}
+
 TEST(DequePrivate, ia_fill_large)
 {
 	MyDeque<int> x;
@@ -1901,11 +1936,113 @@ TEST(DequePrivate, set_deque_ptr)
 	ASSERT_TRUE(x.e == 0);
 }
 
-TEST(DequePrivate, rebuild)
+TEST(DequePrivate, rebuild_empty)
+{
+	MyDeque<int> x(0);
+	size_t capacity = x.ce - x.cb;
+	x.rebuild(capacity * SIZET + 1);
+	size_t new_capacity = x.ce - x.cb;
+	ASSERT_TRUE(new_capacity > 2 * capacity);
+}
+
+TEST(DequePrivate, rebuild_one)
 {
 	MyDeque<int> x(1);
 	size_t capacity = x.ce - x.cb;
 	x.rebuild(capacity * SIZET + 1);
 	size_t new_capacity = x.ce - x.cb;
 	ASSERT_TRUE(new_capacity > 2 * capacity);
+}
+
+TEST(DequePrivate, rebuild_less_sizet)
+{
+	MyDeque<int> x(SIZET - 1);
+	size_t capacity = x.ce - x.cb;
+	x.rebuild(capacity * SIZET + 1);
+	size_t new_capacity = x.ce - x.cb;
+	ASSERT_TRUE(new_capacity > 2 * capacity);
+}
+
+TEST(DequePrivate, rebuild_greater_sizet)
+{
+	MyDeque<int> x(SIZET * 2);
+	size_t capacity = x.ce - x.cb;
+	x.rebuild(capacity * SIZET + 1);
+	size_t new_capacity = x.ce - x.cb;
+	ASSERT_TRUE(new_capacity > 2 * capacity);
+}
+
+TEST(DequePrivate, ia_copy)
+{
+	MyDeque<int> x;
+	MyDeque<int> y(10, 10);
+	std::allocator<int*> A;
+	int** outer_array = A.allocate(1);
+	*outer_array = x._a.allocate(SIZET);
+	x.ia_copy(y.size(), y.begin(), outer_array);
+	for(size_t i = 0; i < y.size(); ++i)
+		ASSERT_EQ((*outer_array)[i], y[i]);
+	destroy(x._a, *outer_array, *outer_array + y.size());
+	x._a.deallocate(*outer_array, SIZET);
+	A.deallocate(outer_array, 1);
+}
+
+TEST(DequePrivate, ia_copy_sizet)
+{
+	MyDeque<int> x;
+	MyDeque<int> y(SIZET, 10);
+	std::allocator<int*> A;
+	int** outer_array = A.allocate(1);
+	*outer_array = x._a.allocate(SIZET);
+	x.ia_copy(y.size(), y.begin(), outer_array);
+	for(size_t i = 0; i < y.size(); ++i)
+		ASSERT_EQ((*outer_array)[i], y[i]);
+	destroy(x._a, *outer_array, *outer_array + y.size());
+	x._a.deallocate(*outer_array, SIZET);
+	A.deallocate(outer_array, 1);
+}
+
+TEST(DequePrivate, ia_copy_swap)
+{
+	MyDeque<int> x;
+	MyDeque<int> y;
+	x.ia_copy(x.cb, x.ce, y.cb);
+	ASSERT_EQ(x, y);
+}
+
+TEST(DequePrivate, ia_copy_swap_x)
+{
+	MyDeque<int> z;
+	MyDeque<int> x(10, 10);
+	MyDeque<int> y(10);
+	z.ia_copy(x.cb, x.ce, y.cb);
+	ASSERT_EQ(x.size(), 10);
+	ASSERT_EQ(y.size(), 10);
+	ASSERT_EQ(std::count(x.begin(), x.end(), 0), x.size());
+	ASSERT_EQ(std::count(y.begin(), y.end(), 10), y.size());
+}
+
+TEST(DequePrivate, ia_copy_swap_y)
+{
+	MyDeque<int> z;
+	MyDeque<int> x(10);
+	MyDeque<int> y(10, 10);
+	z.ia_copy(y.cb, y.ce, x.cb);
+	ASSERT_EQ(x.size(), 10);
+	ASSERT_EQ(y.size(), 10);
+	ASSERT_EQ(std::count(x.begin(), x.end(), 10), x.size());
+	ASSERT_EQ(std::count(y.begin(), y.end(), 0), y.size());
+}
+
+TEST(DequePrivate, ia_copy_swap_large)
+{
+    MyDeque<int> z;
+    MyDeque<int> x(150, 10);
+    MyDeque<int> y(2000, 25);
+    z.ia_copy(x.cb, x.ce, y.cb);
+    ASSERT_EQ(x.size(), 150);
+    ASSERT_EQ(y.size(), 2000);
+    ASSERT_EQ(std::count(y.begin(), y.end(), 25), SIZET);
+    ASSERT_TRUE(std::count(y.begin(), y.end(), 10) >= (ptrdiff_t) x.size());
+    ASSERT_EQ(std::count(x.begin(), x.end(), 25), x.size());
 }

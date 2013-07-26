@@ -89,14 +89,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;memory&gt;</code><br/>
 <code>#include &lt;stdexcept&gt;</code><br/>
 <code>#include &lt;utility&gt;</code><br/>
+<code>#include &lt;stddef.h&gt;</code><br/>
 </div>
 <p><a href="Deque_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque.html">MyDeque&lt; T, A &gt;</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html">MyDeque&lt; T, A &gt;::iterator</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1const__iterator.html">MyDeque&lt; T, A &gt;::const_iterator</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyDeque_1_1iterator.html">MyDeque&lt; T, A &gt;::iterator</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename A , typename BI &gt; </td></tr>
@@ -107,7 +108,8 @@ Functions</h2></td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">BI&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="Deque_8h.html#a23cb75ee659792e77576e5395452078a">uninitialized_fill</a> (A &amp;a, BI b, BI e, const U &amp;v)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Deque_8h.html#a0534a8811039e5f05ee60619292ab8fa">SIZET</a> = 10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Deque_8h.html#a0534a8811039e5f05ee60619292ab8fa">SIZET</a> = 1000</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Deque_8h.html#af0ff6c9babead37854a2a11241621907">USIZET</a> = 1000</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="ae5ccf961a6e64163beab1ef8f8934fe5"></a><!-- doxytag: member="Deque.h::destroy" ref="ae5ccf961a6e64163beab1ef8f8934fe5" args="(A &amp;a, BI b, BI e)" -->
@@ -288,7 +290,20 @@ template&lt;typename A , typename BI , typename U &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const ptrdiff_t <a class="el" href="Deque_8h.html#a0534a8811039e5f05ee60619292ab8fa">SIZET</a> = 10</td>
+          <td class="memname">const ptrdiff_t <a class="el" href="Deque_8h.html#a0534a8811039e5f05ee60619292ab8fa">SIZET</a> = 1000</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af0ff6c9babead37854a2a11241621907"></a><!-- doxytag: member="Deque.h::USIZET" ref="af0ff6c9babead37854a2a11241621907" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t <a class="el" href="Deque_8h.html#af0ff6c9babead37854a2a11241621907">USIZET</a> = 1000</td>
         </tr>
       </table>
 </div>
@@ -314,7 +329,7 @@ template&lt;typename A , typename BI , typename U &gt; </div>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 24 2013 17:24:46 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 25 2013 20:48:10 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

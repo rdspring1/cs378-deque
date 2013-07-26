@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['b',['b',['../classMyDeque.html#a7de0e2fd84b8d3fa41ad9d917b1ed512',1,'MyDeque']]]
+  ['b',['b',['../classMyDeque.html#a29886775812d20f7da7bbdfa6886b1bc',1,'MyDeque']]]
 ];
